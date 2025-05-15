@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 및 멀티미디어 태그</title>
+
+    <style>
+        .image {
+            opacity: 50%;
+            mix-blend-mode: color-burn;
+        }
+    </style>
+</head>
+    <h2>이미지 태그</h2>
+    <img class="image" src="../asset/tiber_river.jpg" width="200" height="120"></img>
+    <!-- ../ 상위 폴더 -->
+    <!-- ./ 현재 폴더 -->
+    <h4>이미지 최적화 로딩</h4></h1>
+    <img class="image" src="../asset/tiber_river.jpg" width="200" height="120" loading="lazy"></img>
+    <!-- loading="lazy" 사용자가 화면을 내릴때 성능 최적화 -->
+<hr>
+    <h3>고정 크기 (픽셀 단위)</h3>
+    <p>화면 크기와 관계없이 고정된 크기</p>
+    <img src="../asset/rome.jpg" width="200" height="120"></img>
+    <hr>
+    <h3>가변 크기 (퍼센트 단위)</h3>
+    <P>부모태그 기준으로 크기 변화</P>
+    <!-- <body> 또는 <div> -->
+    <img src="../asset/stpeters.jpg" width="49%" height="120"></img>
+    <img src="../asset/stpeters.jpg" width="49%" height="49%"></img>
+<hr>
+    <!--Responsive in html-->
+    <h3>반응형 이미지</h3>
+    <p>디바이스 너비에 따라 최적의 이미지를 자동 선택</p>
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200"
+    srcset="
+    https://images.unsplash.com/photo-1518770660439-4636190af475?w=480 480w,
+    https://images.unsplash.com/photo-1518770660439-4636190af475?w=800 800w,
+    https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200 1200w,"
+    
+    sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
+    width="100%"
+     ></img>
+<hr>
+<!-- controls 재생 컨트롤러 표시 -->
+<!-- loop 반복 -->
+<h2>오디오 태그</h2>
+<audio src="../asset/audio.mp3" controls loop></audio>
+<a href="../asset/audio.mp3" download="">Audio Download</a>
+
+<hr>
+<!-- Video태그 -->
+ <video src=""></video>
+</body>
+</html>
