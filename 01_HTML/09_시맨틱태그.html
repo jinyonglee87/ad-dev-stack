@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>시멘틱 태그</title>
+
+    <style src="./.css">
+      header {
+        background-color: aqua;
+        align-content: center;
+      }
+
+      nav {
+        background-color: beige;
+      }
+
+      main {
+        background-color: teal;
+      }
+
+      section {
+        background-color: aqua;
+      }
+
+      article {
+        background-color: rgb(21, 255, 0);
+      }
+
+      aside {
+        background-color: rgb(223, 114, 114);
+      }
+
+      footer {
+        background-color: rgb(159, 124, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>레이아웃 1 : div 사용</h2>
+    <!-- 시멘틱 태그가 없던 시절 div로 구조 잡음-->
+
+    <!-- HEADER -->
+    <div id="logo">
+      <h1>LOGO</h1>
+      <div id="gnb">GNB</div>
+      <div id="snsbtn"></div>
+    </div>
+
+    <!-- MAIN -->
+    <div id="main">This is main</div>
+    <div id="section">This is section</div>
+
+    <div class="article">Article 1</div>
+    <div class="article">Article 2</div>
+
+    <!-- SIDELINK -->
+    <div id="aside">aside links</div>
+
+    <!-- FOOTER -->
+    <div id="footer">footer</div>
+
+    <br />
+    <hr />
+
+    <h2>레이아웃 2 : 시멘틱 태그 사용</h2>
+    <!-- 
+     1. <Header> = top of the page (logo, Global navigation bar)
+     2. <Header> always stay on top of the page
+     -->
+    <header>
+      <h1>logo</h1>
+      <nav>navigation bar</nav>
+      <!-- 
+    1. <nav> = navigation
+    2. Local navigation bar (LNB)
+    3. Global navigation bar (GNB)
+    --></header>
+    <main>
+      <!-- 
+    1. <main> = main content
+    2. one used once
+    --></main>
+    <section>
+      <!-- 
+    1. <section> = content group
+    2. section, article
+    3. <section><article></article></section>
+    -->
+      this is section
+      <article>this is article</article>
+    </section>
+    <aside>
+      <!-- 
+    1. <aside> = content on the side
+        -->
+      sdf
+    </aside>
+    <footer>
+      <!-- 
+    1. <footer> = content on the bottom
+    2.  -->
+      sdf
+    </footer>
+  </body>
+</html>

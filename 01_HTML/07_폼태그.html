@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>폼 태그</title>
+  </head>
+  <body>
+    <!-- form tag: user interacts with page
+         input format goes inside <form></form>
+         
+         대부분 <input>태그의 type 속성으로 구분:
+         입력값 구분을 위해 name 속성(=서버에 전송할 키값) 필수 -->
+    <!-- input tag: ?key= value
+         name="" -->
+    <h1>폼</h1>
+
+    <h2>검색</h2>
+    검색:
+    <form action="" method="get">
+      <!-- action requires a server (backend)
+         method="" "get" or "post" 
+         get: url is exposed, fast but low security. Uses: search engine
+         post: data is saved as hidden, high security. Uses: login info-->
+      <input type="text" name="keyword" placeholder="검색해보세요" />
+      <input type="submit" />
+  </form>
+
+      <h2>로그인</h2>
+      <form action="" method="post">
+        아이디: <input type="text" placeholder="아이디" required/><br />
+        비밀번호: <input type="password" placeholder="비밀번호"/><br /><br />
+        <input type="submit" value="전송" />
+        <input type="reset" value="초기화" />
+        <input type="button" value="확인" onclick="alert('버튼클릭!')" />
+      </form>
+
+      <!--
+      <input type="password"
+      <input type="submit"
+      <input type="reset"
+      <input type="textarea"
+      <input type="select"
+      <input type="button" (controlled by javascript)
+      <input value="change text in button"
+    --></form>
+
+    <h2>라디오 & 체크박스</h2>
+    <!-- 
+        1. label의 for 값 = input의 id랑 일치 for="" seeks id=""
+        2. 서버에는 key=value 형태로 보내야 하는데
+        3. radio can only one selection
+        4. checkbox can have one or more selection
+            key=name, value=value -->
+    <form action="" method="">
+        <fieldset>
+            <legend align="center">성별</legend>
+            <label for="man">
+            <input type="radio" name="gender" value="남자" id="man"/> 남자
+            </label>
+            <br />
+            <label for="woman">
+            <input type="radio" name="gender" value="여자" id="woman" /> 여자
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend align="center">간심사</legend>
+            <label for="travel"></label>
+            <input type="checkbox" name="interest" id="travel" value="travel"> 여행
+            <br />
+            <label for="music"></label>
+            <input type="checkbox" name="interest" id="music" value="music"> 음악
+            <br />
+            <label for="game"></label>
+            <input type="checkbox" name="interest" id="game" value="game"> 게임
+        </fieldset>
+                    <input type="submit" />
+    </form>
+
+    <br>
+    <hr>
+    <h2>파일, 숨김</h2>
+    <!--
+        1. type="file" file attachment
+        2. type="hidden" hidden data
+        2. accept="image/*"
+        3. accept="video/*"
+        3. accept="*.png" -->
+    <form action="" method="post">
+        <input type="file" name="upload" accept="image/*, video/*">
+        <input type="hidden" name="data" value="1234">
+        <button type="submit">전송</button>
+    </form>
+<br><hr>
+
+<h2>날짜 & 시간</h2>
+    <form action="">
+        time: <input type="time"><br><br>
+        datetime-local: <input type="datetime-local"><br><br>
+        date: <input type="date"><br><br>
+        week: <input type="week"><br><br>
+        month: <input type="month"><br><br>
+
+    </form>
+<br><hr>
+
+<h2>그 의외 input</h2>
+<form action="">
+    email: <input type="email"><br>
+    url: <input type="url"><br>
+    tel: <input type="tel"><br>
+    search: <input type="search"><br>
+    number: <input type="number"><br>
+    range: <input type="range"><br>
+    color: <input type="color"><br>
+    <button type="submit">send</button>
+</form>
+<br><hr>
+
+<h2>select, text area</h2>
+<form action="">
+<select name="national" id="">
+    <option value="" disabled selected>선택하세요</option>
+    <optgroup label="아시아">
+    <option value="kr">한국</option>
+    <option value="jp">일본</option>
+    <option value="ch">중국</option>
+    </optgroup>
+    <optgroup label="미대륙"></optgroup>
+    <option value="us">미국</option>
+</select>
+<br><br>
+<textarea style="resize: none" name="" id="" ></textarea>
+</form>
+<br><hr>
+</body>
+</html>

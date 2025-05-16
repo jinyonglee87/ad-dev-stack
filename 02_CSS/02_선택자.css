@@ -1,0 +1,47 @@
+/* 1. 전체 선택자 */
+
+* {
+  color: blue;
+  font-size: 25px;
+}
+
+/* 2. 태그 선택자 */
+
+p {
+  color: tomato;
+}
+
+/* 3. 클래스 선택자 */
+
+.class1 {
+  color: yellowgreen;
+}
+
+.class2 {
+  color: brown;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+/* 4. 아이디 선택자 */
+#id1 {
+  background-color: indigo;
+}
+
+/* 5. 그룹 선택자 (,) */
+
+#select1,
+#select2 {
+  background-color: orangered;
+}
+
+/* 6. 자손 선택자 */
+
+#test1 ul li {
+  background-color: pink;
+}
+
+/* 6.1. 자식 선택자 */
+#test1 > ul > li {
+  background-color: red;
+}

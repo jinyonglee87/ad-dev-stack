@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>하이퍼링크</title>
+  </head>
+  <body>
+    <!-- a tag: link to another source
+         href: source address
+         target: action to link
+         _blank: new window
+          -->
+    <a href="https://www.google.com" target="_blank">Google</a>
+    <hr />
+    <!-- 내부 페이지 링크 -->
+    <ul>
+      <li><a href="02_텍스트태그.html">텍스트태그</a></li>
+    </ul>
+    <hr />
+
+    <!-- 이미지 링크 -->
+    <h2>이미지 링크</h2>
+    <a href="https://www.naver.com" target="_blank"
+      ><img src="../asset/naver.png"
+    /></a>
+    <hr />
+
+    <h2 id="menu">같은 페이지 내 이동</h2>
+    <ul>
+      <li><a href="#test1">테스트1</a></li>
+      <li><a href="#test2">테스트2</a></li>
+      <li><a href="#test3">테스트3</a></li>
+    </ul>
+
+    <h3 id="test1">테스트1</h3>
+    <p>This is test 1 area</p>
+    <div style="height: 700px"></div>
+    <p><a href="#menu">return to menu</a></p>
+
+    <h3 id="test2">테스트2</h3>
+    <p>This is test 2 area</p>
+    <div style="height: 700px"></div>
+    <p><a href="#menu">return to menu</a></p>
+
+    <h3 id="test3">테스트3</h3>
+    <p>This is test 3 area</p>
+    <div style="height: 700px"></div>
+    <p><a href="#menu">return to menu</a></p>
+    <!-- h3{테스트$}*3 -->
+  </body>
+</html>
