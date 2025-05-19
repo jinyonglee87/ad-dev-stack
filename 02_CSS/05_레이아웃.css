@@ -1,0 +1,109 @@
+/* width, height */
+#fixed-size {
+  width: 300px;
+  height: 150px;
+  background-color: lightblue;
+}
+
+#variable-size {
+  width: 100vw; /* px: specific, %: parent ratio, viewport: display size*/
+  height: 20vh;
+  background-color: lightgreen;
+}
+
+/* padding, margin */
+.space {
+  background: lightyellow;
+  border: 1px solid;
+  margin-bottom: 10px;
+}
+
+#padding1 {
+  padding: 20px;
+}
+
+#padding2 {
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-left: 10px;
+  padding-bottom: 40px;
+  /* syntax: -top, -bottom, -left, -right*/
+  /* order: top, right, bottom, left*/
+  /* order: top right/left bottom
+  padding: 30px(top), 20px(right/left), 30px(bottom)
+  */
+  /* order: top/bottom right/left
+  padding: 30px(top/bottom) 20px(right/left)
+  */
+}
+
+#margin1 {
+  margin: 20px;
+}
+
+#margin2 {
+  margin: 5px 15px 10px 30px;
+}
+
+.collapse-box {
+  background-color: lightcoral;
+  padding: 10px;
+  border: 1px solid #444;
+}
+
+#box1 {
+  margin-bottom: 50px;
+}
+
+#box2 {
+  margin-top: 30px;
+}
+
+.center-box {
+  width: 200px;
+  height: 100px;
+  background: lightseagreen;
+  color: white;
+  text-align: center;
+  line-height: 100px;
+  margin: auto;
+}
+
+/*border*/
+.border {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background: #eee;
+  display: inline-block;
+}
+
+#border1 {
+  border: 3px solid red;
+}
+
+#border2 {
+  border: 5px dashed green;
+}
+
+#border3 {
+  border: 2px dotted blue;
+}
+
+.radius-box {
+  width: 120px;
+  height: 120px;
+  background: plum;
+  color: white;
+  text-align: center;
+  line-height: 120px;
+  margin-bottom: 10px;
+}
+
+.radius1 {
+  border-radius: 30px;
+}
+
+.radius2 {
+  border-radius: 50%;
+}

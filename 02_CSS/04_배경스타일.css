@@ -1,3 +1,7 @@
+body {
+  padding: 0;
+}
+
 /* background-color */
 #bc {
   background-color: lightblue;
@@ -30,6 +34,7 @@
   border: 2px solid;
   background-image: url(asset/bg.jpg);
   background-size: cover; /*size: px, contain, cover */
-  background-position: center;
   background-repeat: no-repeat; /*repeat-x, repeat-y, */
+  background-position: center; /*bottom right, bottom left*/
+  background-attachment: fixed; /*fixes bg position while scroll */
 }
