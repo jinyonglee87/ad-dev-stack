@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../02_CSS/03_텍스트스타일.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h2>Font-Family</h2>
+    <p>페이지에서 사용할 글꼴을 지정하는 속성</p>
+    <p id="ff1">글꼴 테스트 font Style Test 1</p>
+    <p id="ff2">글꼴 테스트 font Style Test 2</p>
+    <p id="ff3">글꼴 테스트 font Style Test 3</p>
+    <p id="ff4">글꼴 테스트 font Style Test 4</p>
+
+    <br />
+    <hr />
+    <h2>Font-Weight</h2>
+    <p>글자의 굵기를 조절하는 속성 (기준)</p>
+    <p id="fw2">원래 굵기보다 더 가늘게</p>
+    <p id="fw1">굵은 글꼴로 변경</p>
+    <p id="fw3">원래 굵기보다 더 굵게</p>
+
+    <br />
+    <hr />
+    <h2>Font-Size</h2>
+    <p>글자의 크기를 지정하는 속성</p>
+    <p id="fs1">고정크기 60px</p>
+    <div style="font-size: 30px">
+      <p id="fs2">가변크기 2em</p>
+      <p id="fs3">가변크기 2rem</p>
+      <p id="fs4">가변크기 200%</p>
+    </div>
+
+    <br />
+    <hr />
+    <h2>Font-Style</h2>
+    <p>글자를 이탤릭체로 표시하도록 지정하는 속성</p>
+
+    <p id="fs5">italic.......기울임 글꼴</p>
+    <p id="fs6">oblique 기울임 글꼴</p>
+
+    <br />
+    <hr />
+    <h2>Font-Variant</h2>
+    <p>영어의 작은 대문자를 지정하는 속성</p>
+    <p>HELLO CSS</p>
+    <p id="fv">hello css</p>
+
+    <br />
+    <hr />
+    <h2>Font</h2>
+    <p>글꼴 스타일 속성을 한 번에 지정할 수 있는 속성</p>
+    <!-- p#font${font 테스트 $}*2 -->
+    <p id="font1">font 테스트 1</p>
+    <p id="font2">font 테스트 2</p>
+
+    <br />
+    <hr />
+    <h2>Font-Color</h2>
+    <p>글자색 지정하는 속성</p>
+    <p id="c-name">색상명으로 지정</p>
+    <p id="c-16">16진수 값으로 지정</p>
+    <p id="c-rgb">rgb/rgba로 지정</p>
+    <p id="hsl">hsl/hsla로 지정</p>
+
+    <br />
+    <hr />
+    <h2>Text-Decoration</h2>
+    <p>글자에 밑줄/윗선을 긋거나 취소선을 긋는 속성</p>
+    <!-- p#td$*4 -->
+    <p id="td1">underline: 밑줄</p>
+    <p id="td2">overline: 윗줄</p>
+    <p id="td3">line-through: 취소선</p>
+    <a href="#"><p id="td4">none: 링크 선 제거</p></a>
+
+    <br />
+    <hr />
+    <h2>Text-Transform</h2>
+    <p>영문자 대소문자 변환</p>
+    <p id="tt1">uppercase: 모든 글자 대문자</p>
+    <p id="tt2">LOWERCASE: 모든 글자 소문자</p>
+    <p id="tt3">capitalize: 첫 글자만 대문자</p>
+
+    <br />
+    <hr />
+    <h2>Text-Shadow</h2>
+    <p>텍스트에 그림자 추가</p>
+    <!-- p.shadow#ts${HTML}*3 -->
+    <p class="shadow" id="ts1">HTML</p>
+    <p class="shadow" id="ts2">HTML</p>
+    <p class="shadow" id="ts3">HTML</p>
+
+    <br />
+    <hr />
+    <h2>White-space</h2>
+    <p id="whs">공백 여러 개 테스트 줄을 나</p>
+
+    <br />
+    <hr />
+    <h2>Letter-spacing</h2>
+    <p id="ls">글자 간격 조정</p>
+    <!-- 글자마다 간격 -->
+    <br />
+    <hr />
+    <h2>Word-spacing</h2>
+    <p id="ws">단어 간격 조정</p>
+    <!-- 단어마다 간격 -->
+
+    <br />
+    <hr />
+    <h2>Text-Align</h2>
+    <p>문장 정렬</p>
+    <h3>왼쪽 정렬 (기본)</h3>
+    <p id="ta1">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis corrupti
+      voluptas maiores beatae, error ratione asperiores quos, sed quaerat quam
+      impedit quisquam quis debitis obcaecati rem, placeat nisi fuga
+      exercitationem.
+    </p>
+    <h3>가운데 정렬</h3>
+    <p id="ta2">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis corrupti
+      voluptas maiores beatae, error ratione asperiores quos, sed quaerat quam
+      impedit quisquam quis debitis obcaecati rem, placeat nisi fuga
+      exercitationem.
+    </p>
+    <h3>오른쪽 정렬</h3>
+    <p id="ta3">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis corrupti
+      voluptas maiores beatae, error ratione asperiores quos, sed quaerat quam
+      impedit quisquam quis debitis obcaecati rem, placeat nisi fuga
+      exercitationem.
+    </p>
+    <h3>양쪽 정렬</h3>
+    <p id="ta3">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis corrupti
+      voluptas maiores beatae, error ratione asperiores quos, sed quaerat quam
+      impedit quisquam quis debitis obcaecati rem, placeat nisi fuga
+      exercitationem.
+    </p>
+
+    <br />
+    <hr />
+    <h2>Text-Indent</h2>
+    <p id="ti">문단 첫 줄 들여쓰기</p>
+
+    <br />
+    <hr />
+    <h2>Line-height</h2>
+    <p>줄 간격</p>
+    <p id="lh">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quae
+      provident quam accusamus, velit modi amet maiores at, a, odio similique
+      commodi sequi temporibus ipsam optio excepturi et officiis. A!
+    </p>
+
+    <br />
+    <hr />
+    <h2>Text-Overflow</h2>
+    <p id="to">
+      영역을 벗어나는 텍스트를 ...으로 표시한다. 실제로는 길이가 제한되어 있어야
+      효과가 보입니다.
+    </p>
+
+    <br />
+    <hr />
+    <h2>List-style</h2>
+    <ul class="circle">
+      <li>circle</li>
+    </ul>
+    <ul class="square">
+      <li>square</li>
+    </ul>
+    <ul class="none">
+      <li>none</li>
+    </ul>
+  </body>
+</html>

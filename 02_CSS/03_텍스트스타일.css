@@ -1,0 +1,204 @@
+#ff1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  color: blue;
+}
+
+#ff2 {
+  font-family: "궁서", serif;
+}
+
+#ff3 {
+  font-family: "돋음", sans-serif;
+}
+
+#ff4 {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Font-weight */
+#fw1 {
+  font-weight: 500;
+}
+
+#fw2 {
+  font-weight: 100;
+}
+
+#fw3 {
+  font-weight: 900;
+}
+
+/* Font-size */
+
+#fs1 {
+  font-size: 60 px; /* px: specified */
+}
+#fs2 {
+  font-size: 2em; /* em: affected by parent(30px*2=60px)*/
+}
+#fs3 {
+  font-size: 2rem; /* rem: affected by html(16px*2 = 32px) */
+}
+#fs4 {
+  font-size: 200%; /* %: ratio affected by parent(30px*2.0=60px)*/
+}
+
+/* font-style */
+#fs5 {
+  font-style: italic;
+}
+
+#fs6 {
+  font-style: oblique;
+}
+
+/* font-variant */
+#fv {
+  font-variant: small-caps;
+}
+
+/* Font */
+#font1 {
+  /* font: style > variant > weight > size/line-height "font-family" */
+  font: italic small-caps bold 32px/2 "Noto Sans KR";
+}
+
+#font2 {
+  /* 
+  font-size: 2rem;
+  font-family: "Noto Sans KR"; */
+  font: 2rem "Noto Sans KR";
+}
+
+/* Font-Color */
+#c-name {
+  color: red; /*limited to web safe colors: 216 color*/
+}
+
+#c-16 {
+  color: #00ffb3; /*#RRGGBB*/
+}
+
+#c-rgb {
+  color: rgb(148, 93, 93); /*red, green, blue*/
+  color: rgb(0, 0, 0, 0.5); /*red, green, blue, Alpha(0~1)*/
+}
+
+#hsl {
+  color: hsl(200, 50%, 50%, 0.2);
+  /* 색상환(H, 0~360) 채도(S, 0~100%) 밝기(L, 0~100%) 투명도(A, 0~1)*/
+}
+
+#td1 {
+  text-decoration: underline;
+}
+#td2 {
+  text-decoration: overline;
+}
+#td3 {
+  text-decoration: line-through;
+}
+#td4 {
+  text-decoration: none;
+}
+
+/* Text-Transform */
+
+#tt1 {
+  text-transform: uppercase;
+}
+#tt2 {
+  text-transform: lowercase;
+}
+#tt3 {
+  text-transform: capitalize;
+}
+
+/* Text-Shadow */
+.shadow {
+  font-size: 50px;
+  font-weight: 900;
+}
+
+#ts1 {
+  color: orangered;
+  text-shadow: 5px 5px 5px green;
+  /* x-axis, y-axis, blur, color */
+}
+
+#ts2 {
+  color: white;
+  text-shadow: 0px 0px 10px yellowgreen;
+}
+
+#ts3 {
+  text-shadow: 0px 0px 5px gray, 0px -5px 4px yellow, 0px -10px 8px orange,
+    0px -22px 20px red;
+}
+
+/* White-space */
+#whs {
+  white-space: pre-wrap;
+}
+
+/* letter-spacing / word-spacing */
+#ls {
+  letter-spacing: 10px;
+}
+
+#ws {
+  word-spacing: 10px;
+}
+
+/* Text-align */
+#ta1 {
+  text-align: left;
+}
+
+#ta2 {
+  text-align: center;
+}
+
+#ta3 {
+  text-align: right;
+}
+
+#ta4 {
+  text-align: justify;
+}
+
+/* Text-indent */
+#ti {
+  text-indent: 10px;
+}
+
+/* Line-height */
+#lh {
+  line-height: 1.5;
+}
+
+/* text-overflow */
+#to {
+  background: beige;
+  width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* list-style */
+ul.circle {
+  list-style: circle;
+}
+
+ul.square {
+  list-style: square;
+}
+
+ul.none {
+  list-style: none;
+}

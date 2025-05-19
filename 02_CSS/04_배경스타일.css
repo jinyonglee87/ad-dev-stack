@@ -1,0 +1,35 @@
+/* background-color */
+#bc {
+  background-color: lightblue;
+}
+
+/* background-clip */
+.div-test {
+  background-color: peachpuff;
+  padding: 30px;
+  border: 5px dashed orange;
+  margin-bottom: 20px;
+}
+
+#bc1 {
+  background-clip: content-box; /*limits the background to content*/
+}
+
+#bc2 {
+  background-clip: padding-box; /*limits the background to padding(within border)*/
+}
+
+#bc3 {
+  background-clip: border-box; /*no-limit to the background but doesn't exceed border*/
+  border-color: lightgreen;
+}
+
+#test {
+  width: 400px;
+  height: 300px;
+  border: 2px solid;
+  background-image: url(asset/bg.jpg);
+  background-size: cover; /*size: px, contain, cover */
+  background-position: center;
+  background-repeat: no-repeat; /*repeat-x, repeat-y, */
+}
