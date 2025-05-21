@@ -1,0 +1,87 @@
+code {
+  font-size: 1.2em;
+  display: inline-block;
+  background-color: #cccccc;
+  padding: 5px;
+}
+
+.response-color {
+  background-color: lightblue;
+}
+
+@media (max-width: 1000px) {
+  /*최대 1000px부터 반영*/
+  .response-color {
+    background-color: cadetblue;
+  }
+}
+
+@media (max-width: 600px) {
+  /*최대 600px부터 반영*/
+  .response-color {
+    background-color: cornflowerblue;
+  }
+}
+
+.response-color2 {
+  background-color: coral;
+}
+
+@media (min-width: 600px) {
+  /*min-width: 모바일 기준*/
+  .response-color2 {
+    background-color: darkseagreen;
+  }
+}
+
+@media (min-width: 1000px) {
+  .response-color2 {
+    background-color: deeppink;
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.flex-container .item {
+  background-color: dodgerblue;
+  min-width: 480px;
+  max-width: auto;
+  height: 200px;
+  padding: 10px;
+  flex: 1;
+}
+
+@media (min-width: 480px) {
+  .flex-container .item {
+    background-color: pink;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.grid-container .item {
+  background-color: lightpink;
+  height: 100px;
+}
+
+@media (min-width: 500px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 800px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

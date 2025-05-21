@@ -1,0 +1,58 @@
+:root {
+  --main-width: 200px;
+  --main-color: rgba(0, 0, 0, 0.5);
+}
+
+header {
+  position: fixed;
+  width: var(--main-width);
+  height: 100%;
+  background-color: var(--main-color);
+  background-image: url(../asset/background.jpg);
+  background-blend-mode: color;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
+  color: white;
+}
+
+header h1 {
+  font-size: 4rem;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  padding-inline: 5px;
+  border-bottom: 3px solid white;
+}
+
+header nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: underline;
+  text-align: center;
+  padding-bottom: 20px;
+  gap: 10px;
+}
+
+main {
+  padding: 10px;
+  padding-left: calc(var(--main-width) + 10px);
+  text-align: center;
+}
+
+main h2,
+main p {
+  text-align: left;
+}
+
+main img {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+main h2 {
+  font-size: 3rem;
+  font-weight: bold;
+}

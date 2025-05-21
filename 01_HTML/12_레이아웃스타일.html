@@ -46,6 +46,7 @@
     <br />
     <hr />
     <h3>border</h3>
+    <!-- 5/20 추가사항: 윤의진 -->
     <div class="border" id="border1"></div>
     <div class="border" id="border2"></div>
     <div class="border" id="border3"></div>
@@ -57,5 +58,49 @@
     <div class="radius-box radius2">50%</div>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <h4>box-sizing</h4>
+    <!-- .box.box-content -->
+    <div class="box box-content">
+      300px + padding + border (따로 분류되어있음)
+    </div>
+    <!-- <a href=".ass" -->
+    <!-- .box.box-content -->
+    <div class="box box-border">300px 안에 padding + border 포함</div>
+    <h2>display</h2>
+    <h3>블록요소를 인라인요소로 변경</h3>
+    <!-- .display.display-inline{$ 번째 영역}*5 -->
+    <div class="display display-inline">1 번째 영역</div>
+    <div class="display display-inline">2 번째 영역</div>
+    <div class="display display-inline">3 번째 영역</div>
+    <div class="display display-inline">4 번째 영역</div>
+    <div class="display display-inline">5 번째 영역</div>
+    <h3>인라인 요소를 블록요소로 변경</h3>
+    <span class="display display-block">1 번째 영역</span>
+    <span class="display display-block">2 번째 영역</span>
+    <span class="display display-block">3 번째 영역</span>
+    <span class="display display-block">4 번째 영역</span>
+    <span class="display display-block">5 번째 영역</span>
+    <h3>블록 요소를 인라인 블록요소로 변경</h3>
+    <div class="display display-inline-block">1 번째 영역</div>
+    <div class="display display-inline-block">2 번째 영역</div>
+    <div class="display display-inline-block">3 번째 영역</div>
+    <div class="display display-inline-block">4 번째 영역</div>
+    <div class="display display-inline-block">5 번째 영역</div>
+    <h2>포지셔닝</h2>
+    <p>여러 요소를 원하는 위치에 배치하는 것</p>
+    <h3>float, clear</h3>
+    <!-- .float{00$}*5 -->
+    <div class="float">001</div>
+    <div class="float">002</div>
+    <div class="float">003</div>
+    <div class="float">004</div>
+    <div class="float">005</div>
+    <h3 style="clear: both">position</h3>
+    <!-- left, right, both 존재, both 많이 사용됨 -->
+    <div class="position-box" id="relative"></div>
+    <div class="position-box" id="absolute"></div>
+    <div class="position-box" id="fixed"></div>
+    <div class="position-box" id="sticky"></div>
   </body>
 </html>

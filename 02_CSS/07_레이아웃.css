@@ -1,0 +1,73 @@
+* a {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+body {
+  font-family: sans serif;
+}
+
+header {
+  background: black;
+  display: flex;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  background-image: url(../asset/background.jpg);
+  width: 25%;
+  height: 100%;
+  justify-content: center;
+}
+
+header div {
+  color: white;
+  background-color: black;
+  opacity: 70%;
+  width: 100%;
+  height: 100%;
+  position: flex;
+}
+
+header h1 {
+  font-size: 80px;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: -10px;
+}
+header hr {
+  margin-top: 15px;
+  width: 200px;
+}
+
+header nav {
+  font-size: 32px;
+  margin-top: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header nav a {
+  color: white;
+  margin: 10px;
+}
+
+section {
+  margin-left: 25%;
+}
+
+section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+section p {
+  display: flex;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  justify-content: center;
+  text-align: justify;
+}
