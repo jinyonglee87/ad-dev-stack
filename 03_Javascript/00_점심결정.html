@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>오늘의 점심은?</title>
+    <style>
+      body {
+        background-color: #333;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        color: #dbdbdb;
+        gap: 10px;
+        text-align: center;
+        justify-content: center;
+      }
+
+      button {
+        background: linear-gradient(45deg, aquamarine, lightblue);
+        border-radius: 20px;
+        width: 200px;
+        padding: 10px;
+        color: black;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      #version {
+        justify-content: center;
+      }
+      #version ul {
+        text-align: center;
+        background-color: rgb(21, 21, 31);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>오늘은 점심 뭐 먹지? (v.0.1)</h2>
+      <span>
+        <button onclick="choosePicker()">버튼 선택자</button>
+        <button onclick="pickLunch()">메뉴 추천하기</button>
+        <button onclick="resetResult()">결과 지우기</button>
+      </span>
+
+      <p id="pickerResult" style="font-weight: bold; font-size: 18px"></p>
+      <p id="result" style="font-weight: bold; font-size: 20px"></p>
+
+      <code>
+        <span id="version">
+          ! v.0.1 <br />
+          <ul>
+            <li>배열 적용</li>
+            <li>무작위 연산 적용</li>
+          </ul>
+        </span>
+      </code>
+
+      <script>
+        const lunch = ["일식", "양식", "한식", "중식"];
+        const chinese = ["탕수육", "짜장면", "짬봉"];
+        const korean = ["두루치기", "국밥", "김치찌개"];
+        const japanese = ["돈카츠", "라멘", "스시"];
+        const western = ["파스타", "샌드위치", "햄버거"];
+        const pickers = ["이진용", "윤의진"];
+
+        //function => button onclick 해당
+        //결정권자 무작위 연산 및 출력
+
+        function choosePicker() {
+          const randomIndex = Math.floor(Math.random() * pickers.length);
+          const name = pickers[randomIndex];
+          document.getElementById("pickerResult").textContent =
+            "버튼 선택자는 " + name + "입니다!";
+        }
+
+        //점심 메뉴 무작위 연산 및 출력
+        let result;
+        function pickLunch() {
+          const randomIndex = Math.floor(Math.random() * lunch.length);
+          const todayLunch = lunch[randomIndex];
+
+          if (todayLunch === "중식") {
+            const chineseRandom = Math.floor(Math.random() * chinese.length);
+            result = chinese[chineseRandom];
+          }
+
+          if (todayLunch === "한식") {
+            const koreanRandom = Math.floor(Math.random() * korean.length);
+            result = korean[koreanRandom];
+          }
+
+          if (todayLunch === "일식") {
+            const japaneseRandom = Math.floor(Math.random() * japanese.length);
+            result = japanese[japaneseRandom];
+          }
+
+          if (todayLunch === "양식") {
+            const westernRandom = Math.floor(Math.random() * western.length);
+            result = western[westernRandom];
+          }
+
+          document.getElementById(
+            "result"
+          ).textContent = `오늘의 메뉴는 ${todayLunch} ${
+            result === undefined ? "" : " : " + result
+          } 입니다!`;
+          result = undefined;
+        }
+
+        //초기화 기능
+
+        function resetResult() {
+          document.getElementById("pickerResult").textContent = "";
+          document.getElementById("result").textContent = "";
+          console.clear();
+        }
+      </script>
+    </div>
+  </body>
+</html>

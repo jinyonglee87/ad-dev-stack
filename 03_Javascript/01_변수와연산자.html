@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>변수와 연산자</title>
+
+    <style>
+      .blockcode {
+        width: 500px;
+        background-color: rgb(34, 34, 54);
+        color: aquamarine;
+        padding: 5px;
+        border-radius: 10px;
+      }
+
+      code {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        font-family: Consolas, 'Courier New', monospace;
+      }
+
+      #h3 {
+        background-color: black;
+        display: flex;
+        line-height: 10px;
+      }
+
+      span {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>변수와 연산자</h1>
+      <div class="blockcode">
+        <h3><span id="h3">1. var, let, const</span></h3>
+        <code>
+          <span>// 변수: 값을 담는 공간</span>
+          <span>// 변수명 = 값</span>
+          <span></span>
+          <span>var oldVar = 1;</span>
+          <span>oldVar = "변경";</span>
+          <span>console.log(oldVar);</span>
+          <span>let nickname = "성예찬"</span>
+          <span></span>
+          <span><p>Console:</p></span>
+          <span></span>
+        </code>
+      </div>
+    </div>
+    <script>
+      //var: 예전 버전 (사용 x)
+      var oldVar = 1;
+      oldVar = "변경";
+      console.log(oldVar);
+
+      //let: 일반 변수 선언 (가끔)
+      let nickname = "성예찬";
+      nickname = "이상엽";
+      console.log(nickname);
+
+      // const: 상수 선언 (자주)
+      const name = "조규상";
+      console.log(name);
+    </script>
+    
+    
+    
+    <br><br><br>
+
+
+
+    <br />
+    <hr />
+    <div class="blockcode">
+      <h3><span id="h3">2. 자료형과 typeof</span></h3>
+              <code>
+          <span></span>
+          <span>const userID</span>
+          <span>oldVar = "변경";</span>
+          <span>console.log(oldVar);</span>
+          <span>let nickname = "성예찬"</span>
+        </code>
+      </div>
+      <h3>
+        <p id="console">
+      </p>
+      </h3>
+    </div>
+    <script>
+      const userId = "최다인"; //문자열 = string
+      const age = 15; //문자는 "" 필요, 숫자는 "" 무필요
+      const check = true;  //true, false : 논리형
+      let unknown; //값이 정의되지 않음 = undefined
+      let isNone = null;
+      console.log(typeof userId); //typeof = string
+      console.log(age);
+      console.log(check);
+      console.log(unknown);
+      console.log(isNone);
+
+      let test = "test";
+      console.log(typeof test);
+      test = 123;
+      test = false;
+      console.log(typeof test);
+    </script>
+
+    <br />
+    <hr />
+    <div class="blockcode">
+      <h3><span id="h3">3. 문자열 & 템플릿 리터럴</span></h3>
+    <code>
+      <span>const hobby = "음악";</span>
+      <span>console.log("내 취미는 음악입니다.");</span>
+      <span></span>
+      <span>const hobby = "게임";</span>
+      <span>console.log("내 취미는" + hobby + "입니다.");</span>
+      <span>console.log(`내 취미는 ${hobby}입니다.`); // ` not '</span>
+
+    </code>  
+    </div>
+      <script>
+        const hobby = "게임";
+        console.log("내 취미는 " + hobby + " 입니다.");
+        console.log(`내 취미는 ${hobby} 입니다.`); //` not '
+
+        const escape = `내 이름은\n "문채은" 입니다.`; // \n = 줄바꿈
+        console.log(escape);
+      </script>
+
+      <br>
+      <hr>
+      <h3>4. 숫자</h3>
+      <script>
+        const num1 = 10;
+        const num2 = 3;
+        console.log("더하기 : ", num1 + num2);
+        console.log("빼기 : ", num1 - num2);
+        console.log("곱하기 : ", num1 * num2);
+        console.log("나누기 : ", num1 / num2);
+        console.log("제곱 :", num1 ** num2);
+        console.log("나머지 :", num1 % num2); //1
+        console.log("")
+
+        // 문자열 -> 숫자
+        console.log(Number("100")); // = 100
+        console.log(Number("Hello")); // = NaN
+
+        //숫자 -> 문자열
+        console.log(String(300));
+
+        // 소수 제거 -> 정수(Int = integer)
+        console.log(parseInt(3.9));
+
+        // 문자열 -> 실수
+        console.log(parseFloat("4.2"));
+      </script>
+
+            <br>
+      <hr>
+      <h3>5. Boolean과 비교 연산자</h3>
+      <script>
+        console.log(true);
+        console.log(false);
+
+        // Boolean 변환
+        console.log(Boolean("World")); // if input -> true
+        console.log(Boolean("")); // if no input -> false
+
+        console.log(Boolean(0)); // 0 is null value -> false
+        console.log(Boolean(1)); // 1 is value -> true
+
+        const a = 100; // number 100
+        const b = "100"; // type 100
+        console.log(a == b); // == means equals to -> true
+        console.log(a === b); // === checks if the both value are exactly the same -> false
+        console.log(a === Number(b)); // number 100 = Number-ized type 100 is same -> true
+
+        // != : 같니? !== : 같지 않지?
+        console.log(a != b); // is both value equal? -> false
+        console.log(a !== b); // is both value not equal? -> true
+
+        const c = 200;
+        console.log(a < c); //C is 200 and bigger than A 100 -> true
+        console.log(a > c); //A is not bigger than C -> false
+
+        // 연습
+        console.log("0" == 0); // true
+        console.log(("0" === 0)); // false
+        console.log(Boolean("")); // false
+        console.log(Boolean("0")); // true
+      </script>
+
+      <br>
+      <hr>
+      <h3>6. 논리 연산자</h3>
+      <script>
+        const x = 10;
+        const y = 20;
+
+        // and : 둘 다 true
+        console.log(x < 15 && y > 10); // && : and -> true
+        console.log(x > 15 && y < 10); // false
+        
+        // or : 하나만 true여도 true
+        console.log(x < 15 || y < 10); // true
+        
+        // not: 부정
+        console.log(!false); // ! : reverse boolean -> true
+        console.log(!!true); //true
+
+        console.log("JavaScript" && 12345); // output -> 12345
+        console.log("JavaScript" || 12345); // output -> Javascript
+        console.log(null || "JS"); // output -> JS
+      </script>
+  </body>
+</html>

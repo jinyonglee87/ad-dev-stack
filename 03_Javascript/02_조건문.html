@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>조건문</title>
+  </head>
+  <body>
+    <h1>조건문</h1>
+    <h2><code>if / else</code></h2>
+    <h2><p id="console"></p></h2>
+    <script>
+      /*
+        if(조건) {
+        조건이 true일때 실행되는 코드
+        } else {
+         조건이 false일때 실행되는 코드
+
+         else 생략 가능
+        }
+        */
+      let age = 19;
+
+      if (age > 19) {
+        console.log("성인");
+      } else {
+        console.log("미성년자");
+      }
+
+      // 삼항 연산자 : 조건 ? 조건이 true : 조건이 false
+      age = 20;
+      const result = age > 19 ? "성인" : "미성년자";
+
+      console.log(result);
+    </script>
+
+    <h2><code>2. else if</code></h2>
+    <p id="script2"></p>
+    <script>
+      /*
+          if(조건 A) {
+          조건 A가 true
+          } else if(조건 B) {
+              (조건 A가 false이면서) 조건 B가 true
+          } else {
+              모든 조건이 false
+          }
+      */
+
+      // 20세 이상이면 성인, 14세 이상이면 청소년,
+      // 8세 이상이면 어린이, 그외에는 유아.
+
+      let age1 = 9; //added 1 at the end of age to not mix up with above script
+      //age = promt("나이를 입력해주세요"); --> is a prompt to add age
+      let result2;
+      let message = result2;
+
+      if (age1 >= 20) {
+        result2 = "성인";
+      } else if (age1 >= 14) {
+        result2 = "청소년";
+      } else if (age1 >= 8) {
+        result2 = "어린이";
+      } else {
+        result2 = "유아";
+      }
+
+      console.log(result2);
+      console.log(
+        age >= 20 ? "성인" : age >= 14 ? "청소년" : age >= 8 ? "어린이" : "유아"
+      );
+    </script>
+
+    <h2><code>3. switch</code></h2>
+    <script>
+      /* switch(데이터) { case 조건A(값):
+      조건A가 true
+      break;
+      case 조건B(값)
+      조건B가 true
+      break;
+      default
+      모든 조건이 false } */
+
+      // number 값이 짝수이면 짝수, 홀수이면 홀수
+      // 그게 아니면 숫자가 아닙니다.
+      // solution:
+      /* const number = prompt("enter input")
+      if (number % 2 === 0) {
+        console.log("짝수");
+      } else if (number % 2 === 1) {
+        console.log("짝수");
+      } else {
+        console.log("숫자가 아닙니다");
+      }
+      */
+
+      //   const number = prompt("숫자를 입력하세요");
+
+      //   switch (number % 2) {
+      //     case 0:
+      //       console.log("짝수");
+      //       break;
+      //     case 1:
+      //       console.log("홀수");
+      //       break;
+      //     default:
+      //       console.log("숫자가 아닙니다");
+      //   }
+    </script>
+
+    <h2><code>4. 중첩 if</code></h2>
+    <script>
+      // 조건문 안에 조건문을 넣는 형태
+      // 아이디가 user, 비밀번호가 1234 인 경우만 "로그인 성공"
+      // 비밀번호가 틀리면 "비밀번호 오류"
+      // 아아디가 틀리면 "아이디 오류"
+
+      /*
+      solution:
+      if(아이디가 user1, 비밀번호가 1234 인 경우) {
+      console.log("로그인 성공")
+      } else if(비밀번호가 틀리면) {
+      console.log("비밀번호 오류")
+      } else if(아이디가 틀리면) {
+      console.log("아이디 오류")
+      }
+
+      const id = "user1"
+      const pw = "1234"
+
+      if (id === "user1" && pw === "1234") {
+      console.log("로그인 성공");
+      } else if(pw !== "1234") {
+      console.log("비밀번호 오류");
+      } else if(id !== "user1");
+      console.log("아이디 오류");
+
+      }
+
+
+
+      */
+
+      /*id = prompt("Enter ID");
+      if (id === "user")
+        if (pw === "1234") {
+          pw = prompt("Enter Password");
+          console.log("login success");
+        } else if (id === "") {
+          console.log("you need enter id");
+        } else {
+          console.log("id incorrect");
+        }
+          */
+    </script>
+
+    <h2><code>4. 중첩 if</code></h2>
+    <script>
+      const fruit = "banana";
+
+      switch (fruit) {
+        case "apple":
+          console.log("Apple");
+          break;
+        case "orange":
+          console.log("Orange");
+          break;
+        case "banana":
+          console.log("Banana");
+          break;
+        case "kiwi":
+          console.log("Kiwi");
+      }
+    </script>
+
+    <h2>
+      <code>
+        1. 연습문제: <br />
+        아이디가 'admin' 이면 '관리자입니다' 를 출력하시오
+      </code>
+    </h2>
+    <script>
+      //id = prompt("Enter Login ID");
+
+      if (id === "admin") {
+        console.log("관리자입니다");
+      }
+    </script>
+
+    <h2>
+      <code>
+        2. 연습문제: <br />
+        필기/실기 시험 모두 80점 이상이면 '합격', 아니면 '불합격' 을 출력하시오
+      </code>
+      <script>
+        const write = prompt("필기 시험 점수를 입력 하시오");
+        const action = prompt("실기 시험 점수를 입력 하시오");
+
+        if (write > 100 || action > 100) {
+          console.log("잘못된 점수 입력 입니다");
+          alert("필기 또는 실기 점수가 100점을 초과 하였습니다");
+        } else if (write >= 80 && action >= 80) {
+          console.log("합격");
+        } else if (write < 80 && action < 80) {
+          console.log("불합격");
+        }
+      </script>
+
+    <h2>
+      <code>
+        3. 연습문제: <br />
+        정수가 10과 20 사이인지 판별하시오.
+      </code>
+    </h2>
+    <script>
+        const num = 12
+
+        console.log(10 < num && num < 12)
+    </script>
+  </body>
+</html>
