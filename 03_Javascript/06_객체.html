@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>객체</title>
+  </head>
+  <body>
+    <h1>객체</h1>
+    <script>
+      /*
+       사람 {
+          //특징 !  => 변수
+          이름,
+          나이,
+          사는곳,
+          ...,
+
+          // 행동 ! => 함수
+          일어난다
+          밥먹는다
+          씻는다
+          옷입는다
+          나간다
+          ...,
+      }
+       */
+      // 서로 관련있다는게 보이지 않아 객체가 필요함
+      const name = "이진용";
+      const age = 10;
+      const addr = "서울";
+
+      // 서로 묶어진 정보는 맞지만 의미파악이 안된다
+      const personArr = ["이진용", 10, "서울"];
+
+      //객체: 키 값 구조
+      const personObj = {
+        name: "이진용",
+        age: 10,
+        addr: "서울",
+        hello() {
+          console.log(`안녕하세요 ${this.name}입니다.`);
+        },
+      };
+
+      console.log(personObj);
+      personObj.hello();
+      console.log(personObj.name);
+    </script>
+
+    <h2>1. 객체 생성과 속성/함수 추가</h2>
+    <script>
+      const person1 = {};
+
+      person1.name = "우규빈";
+      person1["age"] = 9;
+      person1.hello = function () {
+        console.log(`안녕 나는 ${this.name}, 나이는 ${this.age}살`);
+      };
+
+      person1.hello();
+
+      const person2 = new Object(); //거의 안 씀 {}랑 동일
+      person2.name = "김은진";
+      person2.age = 7;
+      person2.hello = function () {
+        console.log(`안녕 나는 ${this.name}, 나이는 ${this.age}살`);
+      };
+
+      person2.hello();
+    </script>
+
+    <h2>2. this</h2>
+    <script>
+      // obj 함수
+      const objFunc = {
+        name: "서지은",
+        func: function () {
+          console.log(`익명 함수 : ${this.name}`);
+        },
+      };
+      objFunc.func();
+
+      // 활살표 함수
+      const objArrow = {
+        name: "박지연",
+        func: () => {
+          console.log(this); // 외부 this (전역 객체 - window)
+          console.log(`화살표 함수 : ${this.name}`);
+        },
+      };
+
+      objArrow.func();
+
+      // 메서드 축양형 (Method Shorthand)
+      const objMethod = {
+        name: "이승민",
+        age: 8,
+        func() {
+          console.log(`메서드 축악형 : ${this.name}, ${this.age} 살`);
+        },
+      };
+
+      objMethod.func();
+    </script>
+
+    <h2>3. 생성자 함수 & 클래스</h2>
+    <script>
+      // 생성자 함수
+      // function 뒤에서 시작할땐 대문자
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.hello = function () {
+          console.log(`안녕 나는 ${this.name}, 나이는 ${this.age}살`);
+        };
+      }
+
+      const p1 = new Person("이진용", "11");
+      const p2 = new Person("장효준", "22");
+
+      p1.hello();
+      p2.hello();
+
+      // 클래스
+      // constructor : 클래스 객체를 생성할 때 호출되는 함수
+      class Person2 {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        hello() {
+          console.log(`안녕 나는 ${this.name}, 나이는 ${this.age}살`);
+        }
+      }
+
+      const p3 = new Person2("전영현", 23);
+
+      p3.hello();
+    </script>
+  </body>
+</html>

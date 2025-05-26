@@ -13,9 +13,9 @@
         ["010", "1234", "5678"] → 010-1234-5678
         <script>
           const tel = ["010", "1234", "5678"];
-          tel.splice(1, 0, "-");
-          tel.splice(3, 0, "-");
-          console.log(tel.join(""));
+          const strTel = tel.join("-");
+
+          console.log(strTel);
         </script>
       </li>
       <li>
@@ -27,6 +27,10 @@
           scores.push(50);
           scores.splice(1, 5);
           console.log(scores);
+
+          // simplified
+          scores.splice(0, 5, 39, 50);
+          console.log(scores);
         </script>
       </li>
 
@@ -36,9 +40,8 @@
           const music = ["가요", "팝송", "클래식", "재즈", "OST"];
           // [팝송, 클래식, 재즈]
           // [OST]
-          const [f1, f2, f3, f4, f5] = music;
-          console.log(f2, f3, f4);
-          console.log(f5);
+          console.log(music.slice(1, 4));
+          console.log(music.slice(4));
         </script>
       </li>
 
@@ -66,6 +69,9 @@
           const words = ["one", "two", "three"];
           // [three, two, one]
           console.log(words.reverse());
+
+          words.reverse();
+          console.log(words);
         </script>
       </li>
 
@@ -74,8 +80,18 @@
         <script>
           const dupArr = [1, 2, 2, 3, 3, 3];
           // [1, 2, 3]
-          const dupArr2 = new Set(dupArr);
-          console.log(dupArr2);
+          const unique = new Set(dupArr);
+          console.log(unique);
+
+          //alternative
+
+          const unique2 = [...new Set(dupArr)];
+          console.log(unique2);
+
+          //alternative
+
+          const uniArr = [...unique2];
+          console.log(uniArr);
         </script>
       </li>
     </ol>

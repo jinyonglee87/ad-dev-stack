@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수</title>
+  </head>
+  <body>
+    <h1>함수</h1>
+    <script>
+      // 1. 매개변수 (parameter) X, return value X
+
+      function sayHello() {
+        console.log("안녕하세요~");
+      }
+      sayHello();
+
+      // 2. 매개변수 O, 리턴값 X
+
+      function greet(name = "user") {
+        // name = user is the default value if no value is given
+        console.log(name + "님, 안녕하세요~");
+      }
+      greet("Jin"); // "Jin" value is input
+      greet(); //default value would print as "user"
+
+      // 3. 매개변수 X, 리턴값 O
+
+      function getNumber() {
+        return 1049;
+      }
+      getNumber(); // because of return command, "getNumber(); itself is 1049"
+      console.log(getNumber());
+
+      // 4. 매개변수 O, 리턴값 O
+
+      function add(a, b) {
+        return a + b;
+      }
+
+      add(30, 50);
+
+      console.log(add(30, 50));
+    </script>
+
+    <h2>1. 변수의 Scope(유효범위)</h2>
+    <script>
+      const num1 = 100; // 전역 변수
+
+      function sample1() {
+        const num1 = 200; // sample1 함수 내부 지역 변수
+        console.log(`sample1 내부 : ${num1}`);
+      }
+
+      console.log(`sample1 외부 : ${num1}`);
+      sample1();
+    </script>
+
+    <h2>2. 선언적 vs 익명 vs 화살표 함수</h2>
+    <script>
+      // 선언적 함수(Function Declaration)
+      // 호이스팅(hoisting)
+      console.log("선언적 함수 : ", multiply(20, 56)); // order doesn't matter in declared value due to data being saved in memory
+      function multiply(a, b) {
+        return a * b;
+      }
+
+      // 익명 함수(Function Expression)
+
+      const subtract = function (a, b) {
+        // 함수명이 없다, 변수에 할당
+        return a - b;
+      };
+
+      console.log("익명 함수 :", subtract(5, 8)); //order matters, since it is non-declared
+
+      // 화살표 함수 (Arrow Function)
+      // instead of function, => arrow is used
+
+      const divide = (a, b) => {
+        return a / b;
+      };
+      console.log("화살표 함수 : ", divide(12, 3));
+
+      // Simplified version
+      const divide1 = (a, b) => a / b;
+      console.log("화살표 함수 : ", divide1(36, 3));
+    </script>
+
+    <h2>3. 콜백 함수</h2>
+    <script>
+      // 다른 함수의 인자로 전달되는 함수
+      function callFunc() {
+        console.log("함수 호출 전");
+        callback();
+        console.log("함수 호출 후");
+      }
+
+      function call() {
+        console.log("안녕하세요~ 콜백 함수 호출!");
+      }
+
+      callFunc(call());
+    </script>
+
+    <h2>4. 배열 관련 콜백 함수들</h2>
+    <script>
+      const number = [1, 2, 3, 4, 5];
+      //1. 값을 하나씩 출력해보기
+
+      for (let i = 0; i < number.length; i++) {
+        console.log(number[i]);
+      }
+
+      //1.1 forEach((값, 인덱스, 배열)) => {});
+      number.forEach((value, index, array) => {
+        console.log(value);
+      });
+      //2. 배열의 값을 각각 2배로 만들어서 출력
+      for (const index in number) {
+        console.log("ver. 1", number[index] * 2);
+      }
+
+      const doubled = [];
+      for (const index in number) {
+        doubled.push(number[index] * 2);
+        doubled[index] = number[index] * 2;
+        console.log(doubled);
+      }
+
+      // => map(()) => {} : 각 요소를 가공하여 새로운 배열 반환
+      const doubleMap = number.map((value, index, array) => {
+        return value * 2;
+      });
+      console.log("Map", doubleMap);
+
+      //3. 배열의 짝수만 출력해보기
+
+      for (const value of number) {
+        if (value % 2 === 0) console.log(value);
+      }
+
+      // => filter((값, 인덱스, 배열) => {}) :
+      // 조건에 만족하는 요소만 추출해서 새로운 배열 반환
+      // 리턴한 값들이 true인 것만 모아서
+
+      const evenFilter = number.filter((value, index, array) => {
+        return value % 2 === 0;
+      });
+      console.log(evenFilter);
+
+      //4. 배열의 값 총합 구하기
+      let sum = 0;
+      for (let i = 0; i < number.length; i++) {
+        sum += number[i];
+      }
+      console.log(sum);
+
+      // => reduce((누적된값, 현재값, 인덱스, 배열) => {})
+      // 배열의 각 요소를 누적하여 하나의 값으로 반환
+
+      const sumReduce = number.reduce((acc, cur, index) => {
+        console.log(`acc: ${acc}, cur: ${cur}`);
+        return acc + cur;
+      }, 0);
+    </script>
+  </body>
+</html>
