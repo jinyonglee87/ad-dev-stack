@@ -7,23 +7,129 @@
     <style>
       body {
         background-color: blueviolet;
+        font-family:'San Francisco', Helvetica, Arial, san-serif;
+        
       }
 
       div {
         display: flex;
         flex-direction: column;
         text-align: center;
+        
+      }
+
+      #notch {
+        background-color: black;
+        width: 100px;
+        margin-top: 5px;
+        align-self: center;
+        border-radius: 10px;
+      }
+
+      h1{
+        color:aliceblue;
+        font-size: 40px;
+      }
+
+      h2 {
+        color:aliceblue;
+        font: 1em sans-serif;
+      }
+
+      h3 {
+        color: aliceblue;
+      }
+
+      #viph {
+        background-color: aliceblue;
+        border: 5px solid;
+        width: 330px;
+        height: 650px;
+        border-radius: 50px;
+        align-content: space-between;
+        align-self: center;
+        background-image: url("../asset/tiber_river.jpg");
+        box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.7);
+      }
+
+      #notification {
+        color:aliceblue;
+        font-weight: 800;
+        text-align: left;
+        margin-left: 10px;
+        padding: 5px;
+        margin-bottom: -5px;
+
+      }
+#msgicon {
+  background-color: rgb(60, 60, 122);
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+      #message {
+        background-color: rgba(65, 65, 65, 0.7);
+        border-radius: 20px;
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 5px;
+        font-size: 10px;
+        height: 80px;
+        line-height: 1.5em;      
+      }
+            #message1 {
+        background-color: rgba(65, 65, 65, 0.7);
+        border-radius: 20px;
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 5px;
+        font-size: 10px;
+        height: 80px;
+        line-height: 1.5em;
+        
+      }
+
+      #rollup {
+        background-color: aliceblue;
+        border-radius: 10px;
+        height: 5px;
+        width: 120px;
+        display: flex;
+        margin-top: auto;
+        align-self: center;
+        margin-bottom: 10px;
+    justify-content:space-between;
+      }
+
+      #quoteE {
+        align-self: center;
+        text-align: justify;
       }
     </style>
   </head>
   <body>
     <div>
-      <h2>2025년 5월 27일 화</h2>
-      <h1>16:40:52</h1>
-      <h2>올해 남은 시간 218일 7시간 18분 52초</h2>
-      <h3>quote: No One ... quote: korean translate</h3>
+      <div id="viph">
+        <div id="notch">
+        <div id="left"></div>
+        <div id="center"></div>
+        <div id="right">right</div>
+        </div>
+      <h2><div id="date">2025년 5월 27일 화</div></h2>
+      <h1><div id="clock">16:40:52</div></h1>
+            <h2><div id="newYear">올해 남은 시간 218일 7시간 18분 52초<div></h2>
+      <div id="notification">Notification Center</div>
+              <div id="message"><div id="msgicon"></div>
+              <h3 id="quoteE">quote: No One ... quote: korean translate</h3>
+            </div>
+            <div id="message1"><div id="msgicon"></div>
+              <h3 id="quoteK">quote: No One ... quote: korean translate</h3>
+            </div>
+<div id="rollup"></div>
     </div>
 
-    <script src="../04_JS/실습05_DOM.js"></script>
+    <script src="../04_JS/실습05_DOM.js" type="module"></script>
   </body>
 </html>
