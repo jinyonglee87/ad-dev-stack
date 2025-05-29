@@ -13,16 +13,15 @@
         box-sizing: border-box;
       }
 
-      body {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        overflow-x: hidden;
-        background: rgb(223, 0, 0);
-      }
+body {
+	font-family: 'Inconsolata', 'Monaco', monospace;
+	overflow: hidden;
+	margin: 0;
+	color: #a0a2ae;
+	background: #9a3636
+
+}
+      
 
       nav {
         position: absolute;
@@ -51,9 +50,10 @@
       }
 
       main {
-        background: white;
-        width: 100vw;
-        height: 100vh;
+        background-color: rgba(159, 58, 58, 0.7);
+        position: relative;
+        perspective: 1200px;
+        perspective-origin: 50% -50%;
       }
 
       @keyframes main {
@@ -80,7 +80,7 @@
           main.style.transition = "transform 1s cubic-bezier(0.4, 0.2, 0.2, 1)";
           main.style.transformOrigin = "center";
           main.style.transform =
-            "perspective(800px) rotateX(0deg) translateY(50vh) translateX(50vw) ";
+            "perspective(800px) rotateX(0deg) translate3d(0px, 75vh, -300px)";
         };
       </script>
     </main>
