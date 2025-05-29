@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <style>
+      body {
+        top: 0;
+        left: 0;
+        margin: 0;
+        text-align: center;
+        font-size: 1.1rem;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+
+      form {
+        border: 1px solid;
+        display: flex;
+        flex-direction: column;
+        width: 600px;
+        margin: 0 auto;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        color: black;
+        border-radius: 25px;
+      }
+
+      form input {
+        width: 600px;
+        height: 30px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding-left: 5px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        background: rgb(236, 236, 236);
+      }
+
+      form p {
+        text-align: left;
+        color: gray;
+        font-size: 0.9rem;
+        margin: 5px;
+      }
+
+      button {
+        background: rgb(10, 202, 138);
+        font-size: 1rem;
+        margin-top: 10px;
+        border: none;
+        border-radius: 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>회원가입</h1>
+    <form action="">
+      <label for="">
+        <input type="text" id="id" placeholder="아이디를 입력해주세요" />
+        <br />
+        <p id="idText">영문자로 시작하고 영문자와 숫자 조합으로 4~12자 이내</p>
+      </label>
+      <script>
+        document.getElementById("id").addEventListener("input", function (e) {
+          console.log(e.target.value);
+
+          let regExp = /^[a-zA-Z][a-zA-Z0-9]{3,11}$/;
+          if (regExp.test(e.target.value)) {
+            //   맞음
+            console.log(regExp.test(e.target.value));
+            idText.style.color = "green";
+          } else {
+            //   틀림
+            console.log(regExp.test(e.target.value));
+            idText.style.color = "red";
+          }
+        });
+      </script>
+      <label for="pw">
+        <input type="password" id="pw" placeholder="비밀번호를 입력해주세요" />
+        <br />
+        <p id="pwText">영문자, 숫자, 특수문자 조합으로 8~15자 이내</p>
+      </label>
+      <script>
+        document.getElementById("pw").addEventListener("input", function (e) {
+          console.log(e.target.value);
+
+          let regExp =
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,15}$/;
+          if (regExp.test(e.target.value)) {
+            //   맞음
+            console.log(regExp.test(e.target.value));
+            pwText.style.color = "green";
+          } else {
+            //   틀림
+            console.log(regExp.test(e.target.value));
+            pwText.style.color = "red";
+          }
+        });
+      </script>
+
+      <label for="">
+        <input
+          type="password"
+          id="repw"
+          placeholder="비밀번호를 다시 입력해주세요"
+        />
+        <br />
+        <p id="repwText">위 비밀번호와 동일하게 입력해주세요</p>
+      </label>
+      <script>
+        document.getElementById("repw").addEventListener("input", function (e) {
+          console.log(e.target.value);
+
+          const pwValue = document.getElementById("pw").value;
+          const repwValue = document.getElementById("repw").value;
+          const repwText = document.getElementById("repwText");
+
+          if (pwValue === repwValue) {
+            repwText.style.color = "green";
+          } else {
+            repwText.style.color = "red";
+          }
+        });
+      </script>
+
+      <label for="">
+        <input type="text" id="name" placeholder="이름을 입력해주세요" />
+        <br />
+        <p id="nameText">한글 2자 이상</p>
+      </label>
+      <script>
+        document.getElementById("name").addEventListener("input", function (e) {
+          console.log(e.target.value);
+
+          let regExp = /^[가-힣]{2,}$/;
+          if (regExp.test(e.target.value)) {
+            //   맞음
+            console.log(regExp.test(e.target.value));
+            nameText.style.color = "green";
+          } else {
+            //   틀림
+            console.log(regExp.test(e.target.value));
+            nameText.style.color = "red";
+          }
+        });
+      </script>
+
+      <label for="">
+        <input type="text" id="email" placeholder="이메일을 입력해주세요" />
+        <br />
+        <p id="emailText">이메일 형식</p>
+      </label>
+
+      <script>
+        document
+          .getElementById("email")
+          .addEventListener("input", function (e) {
+            console.log(e.target.value);
+
+            let regExp = /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/;
+            if (regExp.test(e.target.value)) {
+              //   맞음
+              console.log(regExp.test(e.target.value));
+              emailText.style.color = "green";
+            } else {
+              //   틀림
+              console.log(regExp.test(e.target.value));
+              emailText.style.color = "red";
+            }
+          });
+      </script>
+
+      <label for="">
+        <input type="text" id="phone" placeholder="전화번호를 입력해주세요" />
+        <br />
+        <p id="phoneText">전화번호 형식</p>
+      </label>
+
+      <script>
+        document
+          .getElementById("phone")
+          .addEventListener("input", function (e) {
+            console.log(e.target.value);
+
+            let regExp = /^010-\d{4}-\d{4}$/;
+            if (regExp.test(e.target.value)) {
+              //   맞음
+              console.log(regExp.test(e.target.value));
+              phoneText.style.color = "green";
+            } else {
+              //   틀림
+              console.log(regExp.test(e.target.value));
+              phoneText.style.color = "red";
+            }
+          });
+      </script>
+
+      <div>
+        <button id="signup">회원가입</button>
+        <button id="cancel" onclick="history.back()">취소</button>
+      </div>
+      <script>
+        document
+          .getElementById("signup")
+          .addEventListener("click", function () {
+            const id = document.getElementById("id").value;
+            const pw = document.getElementById("pw").value;
+            const repw = document.getElementById("repw").value;
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            event.preventDefault();
+
+            if (id && pw && repw && name && email && phone && pw === repw) {
+              document.getElementById("signup").disabled = false;
+              alert("회원가입이 완료되었습니다.");
+              // 여기서 회원가입 처리 로직을 추가할 수 있습니다.
+            } else {
+              document.getElementById("signup").disabled = true;
+              alert("모든 필드를 올바르게 입력해주세요.");
+            }
+          });
+      </script>
+    </form>
+  </body>
+</html>

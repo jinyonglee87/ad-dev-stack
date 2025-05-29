@@ -1,52 +1,53 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const box = document.querySelector(".container #box");
-  const bgImage = window.getComputedStyle(box).backgroundImage;
-  const url = bgImage.slice(33, -2);
-  for (let i = 0; i < bgImage.length; i++) {}
+  const click = document.querySelector("section button:first-child");
+  // click : 클릭 이벤트를 걸어야 하는 버튼
+  const img = document.querySelectorAll("img");
+  // img : 클릭을 했을때 봐꿔야 하는 이미지
+  const span = document.querySelector("button span");
 
-  console.log(url);
+  const reroll = document.querySelector("section button:Last-child");
 
-  const roll = document.querySelector("#roll");
-  roll.addEventListener("click", (e) => {
-    alert("클릭 이벤트 발생!");
-  });
+  // 게임 함수
+  let count = 0;
+  const game = () => {
+    // 랜덤값 : 1 ~ 3 까지 랜덤값
+    const random = [
+      Math.floor(Math.random() * 3) + 1,
+      Math.floor(Math.random() * 3) + 1,
+      Math.floor(Math.random() * 3) + 1,
+    ];
+    for (let i = 0; i < img.length; i++) {
+      img[i].setAttribute("src", `../asset/spy${random[i]}.jpg`);
+    } // 클릭할 때마다 카운트 증가
+    span.innerHTML = ++count;
 
-  const reRoll = document.querySelector("#reRoll");
-  reRoll.addEventListener("click", (e) => {
-    alert("re클릭 이벤트 발생!");
-  });
+    // 이미지 3개가 일치한 경우 버튼 disabled 처리
+    // 1. click.setAttribute("disabled", "disabled");
+    // 2. click.disabled = true;
+    const h2 = document.querySelector("h2");
+    if (random[0] === random[1] && random[1] === random[2]) {
+      click.disabled = true;
+      h2.style.visibility = "visible";
+    }
+    // click.setAttribute("disabled", true);
+    // h2에 visibility: visible로 변경
+  };
 
-  const randombox = [1, 2, 3];
-  const randombox1 = [1, 2, 3];
-  const randombox2 = [1, 2, 3];
-  const randomValue = randombox[Math.floor(Math.random() * randombox.length)];
-  console.log(randomValue);
-  const randomValue1 =
-    randombox1[Math.floor(Math.random() * randombox1.length)];
-  console.log(randomValue1);
-  const randomValue2 =
-    randombox2[Math.floor(Math.random() * randombox2.length)];
-  console.log(randomValue2);
+  const end = () => {
+    const h2 = document.querySelector("h2");
+    // 이미지는 처음 그대로 1, 2, 3 순서대로 보이게 하고
+    for (let i = 0; i < img.length; i++) {
+      img[i].setAttribute("src", `../asset/spy${i + 1}.jpg`);
+    }
+    // count는 0으로 초기화
+    span.innerHTML = "";
 
-  if (randomValue === 1) {
-    box.style.width = `300px`;
-  } else if (randomValue === 2) {
-    box.style.width = `400px`;
-  } else if (randomValue === 3) {
-    box.style.width = `500px`;
-  } else if (randomValue1 === 1) {
-    box2.style.width = `300px`;
-  } else if (randomValue1 === 2) {
-    box2.style.width = `400px`;
-  } else if (randomValue1 === 3) {
-    box2.style.width = `500px`;
-  }
+    // h2 visibility: hidden으로 변경
+    h2.style.visibility = "hidden";
+    click.disabled = false;
+  };
+
+  click.addEventListener("click", game);
+  reroll.addEventListener("click", end);
+  //("click", () => {location.reload()};
 });
-
-// function randomBackground() {
-//   const body = document.body;
-//   const r = Math.floor(Math.random() * 256);
-//   const g = Math.floor(Math.random() * 256);
-//   const b = Math.floor(Math.random() * 256);
-//   body.style.background = `rgba(${r}, ${g}, ${b}, 0.4)`;
-// }

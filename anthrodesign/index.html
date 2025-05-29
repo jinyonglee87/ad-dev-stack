@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>anthro</title>
+
+    <style>
+      /* Prevent padding and border from causing overflow */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        overflow-x: hidden;
+        background: rgb(223, 0, 0);
+      }
+
+      nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
+
+      nav #bar {
+        background: rgb(223, 0, 0);
+        height: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+      }
+
+      nav i {
+        position: static;
+        transform: none;
+        padding: 10px;
+      }
+
+      main {
+        background: white;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      @keyframes main {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(100vh);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav>
+        <div id="bar"></div>
+        <i id="menu">menu</i>
+        <i id="logo">Anthrodesign</i>
+        <i id="info" style="cursor: pointer">info</i>
+      </nav>
+      <script>
+        document.getElementById("info").onclick = function () {
+          const main = document.querySelector("main");
+          main.style.transition = "transform 1s cubic-bezier(0.4, 0.2, 0.2, 1)";
+          main.style.transformOrigin = "center";
+          main.style.transform =
+            "perspective(800px) rotateX(0deg) translateY(50vh) translateX(50vw) ";
+        };
+      </script>
+    </main>
+  </body>
+</html>
