@@ -16,40 +16,75 @@
       }
 
       form {
-        border: 1px solid;
+        border: 1px solid rgb(179, 179, 179);
         display: flex;
         flex-direction: column;
         width: 600px;
         margin: 0 auto;
         align-items: center;
-        gap: 20px;
-        padding: 20px;
+        gap: 30px;
+        padding-top: 30px;
         color: black;
         border-radius: 25px;
       }
 
+      form {
+        position: relative;
+      }
+
       form input {
-        width: 600px;
+        width: 100%;
+        min-width: 200px;
+        max-width: 550px;
         height: 30px;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 500;
-        padding-left: 5px;
+        padding-left: 10px;
         border: 1px solid gray;
         border-radius: 10px;
-        background: rgb(236, 236, 236);
+        background: rgb(235, 235, 235);
+        box-sizing: border-box;
+      }
+
+      form input:focus {
+        outline: none;
+        border: 2px solid rgb(10, 202, 138);
+        background: rgb(139, 255, 178);
+      }
+
+      form label {
+        width: 90%;
+        max-width: 550px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+      }
+
+      form i {
+        position: absolute;
+        right: 10px;
+        top: 8px;
+        height: 16px;
+        width: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
       }
 
       form p {
         text-align: left;
-        color: gray;
+        color: black;
         font-size: 0.9rem;
         margin: 5px;
       }
 
-      button {
+      form button {
         background: rgb(10, 202, 138);
         font-size: 1rem;
-        margin-top: 10px;
+        margin: 10px;
+        margin-bottom: 30px;
         border: none;
         border-radius: 10px;
         padding: 5px 10px;
@@ -60,9 +95,10 @@
   <body>
     <h1>회원가입</h1>
     <form action="">
+      <!-- 아이디 -->
       <label for="">
         <input type="text" id="id" placeholder="아이디를 입력해주세요" />
-        <br />
+        <i id="checkmark1"></i><br />
         <p id="idText">영문자로 시작하고 영문자와 숫자 조합으로 4~12자 이내</p>
       </label>
       <script>
@@ -74,6 +110,11 @@
             //   맞음
             console.log(regExp.test(e.target.value));
             idText.style.color = "green";
+            checkmark1.innerHTML = "<img src='../asset/check.svg'/>";
+          } else if (e.target.value === "") {
+            //   빈 문자열일 때
+            idText.style.color = "black";
+            checkmark1.innerHTML = "";
           } else {
             //   틀림
             console.log(regExp.test(e.target.value));
@@ -81,9 +122,11 @@
           }
         });
       </script>
+
+      <!-- 비밀번호 -->
       <label for="pw">
         <input type="password" id="pw" placeholder="비밀번호를 입력해주세요" />
-        <br />
+        <i id="checkmark2"></i><br />
         <p id="pwText">영문자, 숫자, 특수문자 조합으로 8~15자 이내</p>
       </label>
       <script>
@@ -96,6 +139,11 @@
             //   맞음
             console.log(regExp.test(e.target.value));
             pwText.style.color = "green";
+            checkmark2.innerHTML = "<img src='../asset/check.svg'/>";
+          } else if (e.target.value === "") {
+            //   빈 문자열일 때
+            pwText.style.color = "black";
+            checkmark2.innerHTML = "";
           } else {
             //   틀림
             console.log(regExp.test(e.target.value));
@@ -104,34 +152,38 @@
         });
       </script>
 
+      <!-- 비밀번호 체크 -->
       <label for="">
         <input
           type="password"
           id="repw"
           placeholder="비밀번호를 다시 입력해주세요"
         />
-        <br />
+        <i id="checkmark3"></i><br />
         <p id="repwText">위 비밀번호와 동일하게 입력해주세요</p>
       </label>
       <script>
         document.getElementById("repw").addEventListener("input", function (e) {
-          console.log(e.target.value);
-
           const pwValue = document.getElementById("pw").value;
-          const repwValue = document.getElementById("repw").value;
+          const repwValue = e.target.value; // more concise
           const repwText = document.getElementById("repwText");
 
-          if (pwValue === repwValue) {
+          if (repwValue === "") {
+            repwText.style.color = "black";
+            checkmark3.innerHTML = "<img src='../asset/check.svg'/>";
+          } else if (repwValue === pwValue) {
             repwText.style.color = "green";
+            checkmark3.innerHTML = "<img src='../asset/check.svg'/>";
           } else {
             repwText.style.color = "red";
           }
         });
       </script>
 
+      <!-- 성함 -->
       <label for="">
         <input type="text" id="name" placeholder="이름을 입력해주세요" />
-        <br />
+        <i id="checkmark4"></i><br />
         <p id="nameText">한글 2자 이상</p>
       </label>
       <script>
@@ -142,18 +194,25 @@
           if (regExp.test(e.target.value)) {
             //   맞음
             console.log(regExp.test(e.target.value));
+            checkmark4.innerHTML = "<img src='../asset/check.svg'/>";
             nameText.style.color = "green";
+          } else if (e.target.value === "") {
+            //   빈 문자열일 때
+            nameText.style.color = "black";
+            checkmark4.innerHTML = "";
           } else {
             //   틀림
             console.log(regExp.test(e.target.value));
             nameText.style.color = "red";
+            checkmark4.innerHTML = "";
           }
         });
       </script>
 
+      <!-- 이메일 -->
       <label for="">
         <input type="text" id="email" placeholder="이메일을 입력해주세요" />
-        <br />
+        <i id="checkmark5"></i><br />
         <p id="emailText">이메일 형식</p>
       </label>
 
@@ -168,6 +227,11 @@
               //   맞음
               console.log(regExp.test(e.target.value));
               emailText.style.color = "green";
+              checkmark5.innerHTML = "<img src='../asset/check.svg'/>";
+            } else if (e.target.value === "") {
+              //   빈 문자열일 때
+              emailText.style.color = "black";
+              checkmark5.innerHTML = "";
             } else {
               //   틀림
               console.log(regExp.test(e.target.value));
@@ -176,9 +240,10 @@
           });
       </script>
 
+      <!-- 전화번호 -->
       <label for="">
         <input type="text" id="phone" placeholder="전화번호를 입력해주세요" />
-        <br />
+        <i id="checkmark6"></i><br />
         <p id="phoneText">전화번호 형식</p>
       </label>
 
@@ -193,6 +258,11 @@
               //   맞음
               console.log(regExp.test(e.target.value));
               phoneText.style.color = "green";
+              checkmark6.innerHTML = "<img src='../asset/check.svg'/>";
+            } else if (e.target.value === "") {
+              //   빈 문자열일 때
+              phoneText.style.color = "black";
+              checkmark6.innerHTML = "";
             } else {
               //   틀림
               console.log(regExp.test(e.target.value));
@@ -201,9 +271,10 @@
           });
       </script>
 
+      <!-- 버튼 -->
       <div>
-        <button id="signup">회원가입</button>
-        <button id="cancel" onclick="history.back()">취소</button>
+        <button type="submit" id="signup">회원가입</button>
+        <button type="reset" id="cancel">취소</button>
       </div>
       <script>
         document
@@ -217,7 +288,7 @@
             const phone = document.getElementById("phone").value;
             event.preventDefault();
 
-            if (id && pw && repw && name && email && phone && pw === repw) {
+            if (id && pw && repw && name && email && phone && pw && repw) {
               document.getElementById("signup").disabled = false;
               alert("회원가입이 완료되었습니다.");
               // 여기서 회원가입 처리 로직을 추가할 수 있습니다.
@@ -226,7 +297,24 @@
               alert("모든 필드를 올바르게 입력해주세요.");
             }
           });
+        document
+          .getElementById("cancel")
+          .addEventListener("click", function () {
+            checkmark1.innerHTML = "";
+            checkmark2.innerHTML = "";
+            checkmark3.innerHTML = "";
+            checkmark4.innerHTML = "";
+            checkmark5.innerHTML = "";
+            checkmark6.innerHTML = "";
+            idText.style.color = "black";
+            pwText.style.color = "black";
+            repwText.style.color = "black";
+            nameText.style.color = "black";
+            emailText.style.color = "black";
+            phoneText.style.color = "black";
+          });
       </script>
     </form>
+    <script src="../04_JS/실습07_회원가입2.js" type="module"></script>
   </body>
 </html>

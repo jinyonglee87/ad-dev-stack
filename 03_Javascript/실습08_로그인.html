@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습 08 로그인</title>
+
+    <link rel="stylesheet" href="../02_CSS/실습07_로그인.css" />
+  </head>
+  <body>
+    <h1>로그인</h1>
+    <div class="loginform">
+      <!-- input -->
+      <div>
+        <input type="text" id="username" placeholder="이름을 입력해주세요" />
+      </div>
+      <div>
+        <input
+          type="text"
+          id="password"
+          placeholder="비밀번호를 입력해주세요"
+        />
+      </div>
+      <!-- button -->
+      <div>
+        <button id="loginbtn">로그인</button>
+      </div>
+    </div>
+
+    <script>
+      document.querySelector("#loginbtn").addEventListener("click", () => {
+        const username = document.querySelector("#username").value;
+        const password = document.querySelector("#password").value;
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+
+        const loggeduser = localStorage.getItem("username");
+
+        document.body.innerHTML = `
+            <div class="loggedin">
+      <div class="welcome">
+        <h2><span id="user">${loggeduser}</span>님 환영합니다!</h2>
+      </div>
+      <div>
+        <div>
+          <button id="logout">로그아웃</button>
+        </div>
+      </div>
+    </div>
+        `;
+
+        const loggedin = document.querySelector(".loggedin");
+        document
+          .querySelector("#logout")
+          .addEventListener("click", function () {
+            localStorage.removeItem("username");
+            localStorage.removeItem("password");
+
+            loggedin.innerHTML = "";
+            location.reload();
+          });
+      });
+    </script>
+  </body>
+</html>
