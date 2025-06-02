@@ -1,0 +1,72 @@
+/* Prevent padding and border from causing overflow */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inconsolata", "Monaco", monospace;
+  overflow: hidden;
+  margin: 0 auto;
+  color: #a0a2ae;
+}
+
+main {
+  background-color: aquamarine;
+}
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+nav #bar {
+  background: rgb(223, 0, 0);
+  height: 6px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: -1;
+}
+
+nav i {
+  position: static;
+  transform: none;
+  padding: 10px;
+}
+
+nav img {
+  width: 210px;
+  position: relative;
+  top: -3px;
+}
+
+::after.main-container {
+  background: white;
+  position: relative;
+  perspective: 1200px;
+  perspective-origin: 50% -50%;
+}
+
+.left {
+  background: rgb(136, 136, 136);
+  width: 36.6vw;
+  height: 100vh;
+  visibility: hidden;
+}
+
+@keyframes main-container {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
