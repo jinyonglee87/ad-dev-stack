@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lotto Bell Curve (num1)</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+  <h2>Lotto num1 Bell Curve</h2>
+  <input type="file" id="csvFile" accept=".csv" />
+  <canvas id="chart" width="800" height="400"></canvas>
+
+  <script>
+    document.getElementById('csvFile').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      Papa.parse(file, {
+        header: true,
+        complete: function(results) {
+          const data = results.data
+            .map(row => parseInt(row.num1, 10))
+            .filter(n => !isNaN(n));
+
+          const freqMap = {};
+          data.forEach(num => {
+            freqMap[num] = (freqMap[num] || 0) + 1;
+          });
+
+          const labels = Object.keys(freqMap).sort((a, b) => a - b);
+          const counts = labels.map(l => freqMap[l]);
+
+          const ctx = document.getElementById('chart').getContext('2d');
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'Frequency of num1',
+                data: counts,
+                fill: false,
+                borderColor: 'blue',
+                tension: 0.3
+              }]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                x: {
+                  title: {
+                    display: true,
+                    text: 'Number (num1)'
+                  }
+                },
+                y: {
+                  title: {
+                    display: true,
+                    text: 'Frequency'
+                  },
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

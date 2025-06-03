@@ -1,0 +1,23 @@
+{
+  "name": "ad-dev-stack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinyonglee87/ad-dev-stack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinyonglee87/ad-dev-stack/issues"
+  },
+  "homepage": "https://github.com/jinyonglee87/ad-dev-stack#readme",
+  "description": "",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}

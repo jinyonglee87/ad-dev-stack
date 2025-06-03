@@ -13,54 +13,22 @@
       <nav>
          <i id="left">left</i>
         <img src="logo.svg"></img>
+         <i id="top-close" style="cursor: pointer">x</i>
         <i id="top" style="cursor: pointer">info</i>
-        <i id="top-close" style="cursor: pointer">x</i>
+       
         <i id="right" style="cursor: pointer">right</i>
+        <i id="bottom" style="cursor: pointer">bottom</i>
         <div id="bar"></div>
+        
       </nav>
+      <div class="mainbody">sdfsdf</div>
       </div>
-      <script>
-        document.getElementById("top").onclick = function () {
-          const main = document.querySelector("main");
-          main.style.transition = "transform 1s cubic-bezier(0.4, 0.2, 0.2, 1)";
-          main.style.transformOrigin = "center";
-          main.style.transform =
-            "perspective(800px) rotateX(0deg) translate3d(0px, 75vh, -300px)";
-        };
-
-        document.getElementById("top-close").onclick = function () {
-          const main = document.querySelector("main");
-          main.style.transition = "transform 1s cubic-bezier(0.4, 0.2, 0.2, 1)";
-          main.style.transformOrigin = "center";
-          main.style.transform =
-            "none";
-        };
-
-        document.getElementById("left").onclick = function () {
-          const main = document.querySelector("main");
-          const left = document.querySelector(".left");
-          left.style.visibility = "visible";
-          main.style.transition = "transform 1s cubic-bezier(0.4, 0.2, 0.2, 1)";
-          main.style.transformOrigin = "center";
-          main.style.transform =
-            "perspective(800px) rotateX(0deg) translate3d(300px, 50vh, 0px)";
-        };
-
-        document.getElementById("right").onclick = function () {
-          const main = document.querySelector("main");
-          const right = document.querySelector(".right");
-          right.style.visibility = "visible";
-          main.style.transition = "transform 1s cubic-bezier(0.4, 0.2, 0.2, 1)";
-          main.style.transformOrigin = "center";
-          main.style.transform =
-            "perspective(800px) rotateX(0deg) translate3d(-300px, 50vh, 0px)";
-        };
-      </script>
-
     </main>
       <div class="left">ss</div>
       <div class="right">sss</div>
       <div class="top">sss</div>
       <div class="bottom">ssss</div>
+
+      <script src="animation.js"></script>
   </body>
 </html>

@@ -10,13 +10,20 @@ body {
   overflow: hidden;
   margin: 0 auto;
   color: #a0a2ae;
+  background-color: red;
 }
 
-main {
+
+.main-container {
+  display: flex;
+  position: relative;
   background-color: aquamarine;
+  flex-direction: column;
+  
 }
+
 nav {
-  position: absolute;
+  
   top: 0;
   left: 0;
   right: 0;
@@ -48,18 +55,24 @@ nav img {
   top: -3px;
 }
 
-::after.main-container {
+.main-container::after {
+  content: "";
   background: white;
   position: relative;
   perspective: 1200px;
   perspective-origin: 50% -50%;
 }
 
+
 .left {
   background: rgb(136, 136, 136);
   width: 36.6vw;
   height: 100vh;
   visibility: hidden;
+}
+
+.mainbody {
+  height: 100vh;
 }
 
 @keyframes main-container {
