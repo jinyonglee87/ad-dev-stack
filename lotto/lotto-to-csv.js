@@ -1,13 +1,18 @@
 // lotto-to-csv.js
-const fs = require('fs');
-const fetch = require('node-fetch');
+// const fs = require('fs');
+// const fetch = require('node-fetch');
+import fs from "fs";
+import fetch from "node-fetch";
 
-const BASE_URL = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=";
+const BASE_URL =
+  "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=";
 const MAX_DRAW = 1178;
 const RESULT_FILE = "lotto_results.csv";
 
 (async () => {
-  const rows = [["drawNo", "date", "num1", "num2", "num3", "num4", "num5", "num6", "bonus"]];
+  const rows = [
+    ["drawNo", "date", "num1", "num2", "num3", "num4", "num5", "num6", "bonus"],
+  ];
 
   for (let i = 1; i <= MAX_DRAW; i++) {
     try {
@@ -37,7 +42,7 @@ const RESULT_FILE = "lotto_results.csv";
   }
 
   // Convert to CSV string
-  const csv = rows.map(row => row.join(",")).join("\n");
+  const csv = rows.map((row) => row.join(",")).join("\n");
 
   // Write to file
   fs.writeFileSync(RESULT_FILE, csv, "utf8");

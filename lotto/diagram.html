@@ -1,72 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lotto Bell Curve (num1)</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
-</head>
-<body>
-  <h2>Lotto num1 Bell Curve</h2>
-  <input type="file" id="csvFile" accept=".csv" />
-  <canvas id="chart" width="800" height="400"></canvas>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lotto Bell Curves (num1 to num5)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  </head>
+  <body>
+    <h2>Lotto Bell Curves (num1 to num5)</h2>
+    <input type="file" id="csvFile" accept=".csv" />
+    <canvas id="chart" width="900" height="450"></canvas>
 
-  <script>
-    document.getElementById('csvFile').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (!file) return;
+    <script>
+      document
+        .getElementById("csvFile")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (!file) return;
 
-      Papa.parse(file, {
-        header: true,
-        complete: function(results) {
-          const data = results.data
-            .map(row => parseInt(row.num1, 10))
-            .filter(n => !isNaN(n));
+          Papa.parse(file, {
+            header: true,
+            complete: function (results) {
+              const columns = [
+                "num1",
+                "num2",
+                "num3",
+                "num4",
+                "num5",
+                "num6",
+                "bonus",
+              ];
+              const freqMaps = {};
 
-          const freqMap = {};
-          data.forEach(num => {
-            freqMap[num] = (freqMap[num] || 0) + 1;
-          });
+              // Initialize frequency maps
+              columns.forEach((col) => (freqMaps[col] = {}));
 
-          const labels = Object.keys(freqMap).sort((a, b) => a - b);
-          const counts = labels.map(l => freqMap[l]);
-
-          const ctx = document.getElementById('chart').getContext('2d');
-          new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels: labels,
-              datasets: [{
-                label: 'Frequency of num1',
-                data: counts,
-                fill: false,
-                borderColor: 'blue',
-                tension: 0.3
-              }]
-            },
-            options: {
-              responsive: true,
-              scales: {
-                x: {
-                  title: {
-                    display: true,
-                    text: 'Number (num1)'
+              results.data.forEach((row) => {
+                columns.forEach((col) => {
+                  const val = parseInt(row[col], 10);
+                  if (!isNaN(val)) {
+                    freqMaps[col][val] = (freqMaps[col][val] || 0) + 1;
                   }
+                });
+              });
+
+              // Get full x-axis range
+              const allNums = new Set();
+              Object.values(freqMaps).forEach((map) => {
+                Object.keys(map).forEach((num) =>
+                  allNums.add(parseInt(num, 10))
+                );
+              });
+
+              const labels = Array.from(allNums).sort((a, b) => a - b);
+
+              const colors = [
+                "blue",
+                "red",
+                "green",
+                "orange",
+                "purple",
+                "pink",
+                "yellow",
+              ];
+              const datasets = columns.map((col, index) => ({
+                label: col,
+                data: labels.map((num) => freqMaps[col][num] || 0),
+                fill: false,
+                borderColor: colors[index],
+                tension: 0.3,
+              }));
+
+              const ctx = document.getElementById("chart").getContext("2d");
+              new Chart(ctx, {
+                type: "line",
+                data: {
+                  labels: labels,
+                  datasets: datasets,
                 },
-                y: {
-                  title: {
-                    display: true,
-                    text: 'Frequency'
+                options: {
+                  responsive: true,
+                  plugins: {
+                    legend: { position: "top" },
                   },
-                  beginAtZero: true
-                }
-              }
-            }
+                  scales: {
+                    x: {
+                      title: {
+                        display: true,
+                        text: "Number (lotto)",
+                      },
+                    },
+                    y: {
+                      beginAtZero: true,
+                      title: {
+                        display: true,
+                        text: "Frequency",
+                      },
+                    },
+                  },
+                },
+              });
+            },
           });
-        }
-      });
-    });
-  </script>
-</body>
+        });
+
+      // num1 1<= i <= 12(freq)
+      // num2 3<= i <= 19(freq)
+      // num3 10<= i <= 34(freq)
+      // num4 15<= i <= 37(freq)
+      // num5 27<= i <= 42(freq)
+    </script>
+  </body>
 </html>
