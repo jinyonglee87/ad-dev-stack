@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lotto Number Filters</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  </head>
+  <body>
+    <h2>Lotto Filtered Sequences Viewer</h2>
+    <input type="file" id="csvFile" accept=".csv" />
+    <button id="exportBtn">Export Filtered CSV</button>
+
+    <fieldset>
+      <legend>Filter Toggles</legend>
+      <label
+        ><input type="checkbox" id="filterSum" checked /> Sum Range
+        (139–184)</label
+      ><br />
+      <label
+        ><input type="checkbox" id="filterOddEven" checked /> Odd/Even
+        Balance</label
+      ><br />
+      <label
+        ><input type="checkbox" id="filterHighLow" checked /> High/Low
+        Balance</label
+      ><br />
+      <label
+        ><input type="checkbox" id="filterSpread" checked /> Number Spread ≥
+        15</label
+      ><br />
+      <label
+        ><input type="checkbox" id="filterConsecutive" checked /> No 3+
+        Consecutive Numbers</label
+      ><br />
+      <label
+        ><input type="checkbox" id="filterLastDigit" checked /> No 3+ Same Last
+        Digit</label
+      ><br />
+      <label
+        ><input type="checkbox" id="filterDelta" checked /> Delta Variety</label
+      ><br />
+      <label
+        ><input type="checkbox" id="filterBonus" checked /> Bonus not in main
+        numbers</label
+      >
+    </fieldset>
+
+    <canvas id="sumChart" width="600" height="300"></canvas>
+    <table border="1" id="resultTable"></table>
+
+    <script>
+      let filteredGlobal = [];
+
+      document
+        .getElementById("csvFile")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          Papa.parse(file, {
+            header: true,
+            dynamicTyping: true,
+            complete: function (results) {
+              const data = results.data.filter((r) => r.num1 !== undefined);
+              const filtered = data.filter((row) => applyAllFilters(row));
+              filteredGlobal = filtered;
+              drawTable(filtered);
+              drawHistogram(filtered.map((r) => rowSum(r)));
+            },
+          });
+        });
+
+      document
+        .getElementById("exportBtn")
+        .addEventListener("click", function () {
+          const csv = Papa.unparse(filteredGlobal);
+          const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "filtered_lotto.csv";
+          a.click();
+        });
+
+      function rowSum(row) {
+        return row.num1 + row.num2 + row.num3 + row.num4 + row.num5 + row.num6;
+      }
+
+      function applyAllFilters(row) {
+        const numbers = [
+          row.num1,
+          row.num2,
+          row.num3,
+          row.num4,
+          row.num5,
+          row.num6,
+        ];
+        const sorted = [...numbers].sort((a, b) => a - b);
+        const sum = numbers.reduce((a, b) => a + b);
+
+        if (document.getElementById("filterSum").checked) {
+          if (sum < 139 || sum > 184) return false;
+        }
+        if (document.getElementById("filterOddEven").checked) {
+          const odd = numbers.filter((n) => n % 2 === 1).length;
+          const even = 6 - odd;
+          if (odd === 0 || even === 0) return false;
+        }
+        if (document.getElementById("filterHighLow").checked) {
+          const low = numbers.filter((n) => n <= 22).length;
+          const high = 6 - low;
+          if (low === 0 || high === 0) return false;
+        }
+        if (document.getElementById("filterSpread").checked) {
+          if (Math.max(...numbers) - Math.min(...numbers) < 15) return false;
+        }
+        if (document.getElementById("filterConsecutive").checked) {
+          for (let i = 0; i < 4; i++) {
+            if (
+              sorted[i + 1] === sorted[i] + 1 &&
+              sorted[i + 2] === sorted[i + 1] + 1
+            )
+              return false;
+          }
+        }
+        if (document.getElementById("filterLastDigit").checked) {
+          for (let d = 0; d <= 9; d++) {
+            if (numbers.filter((n) => n % 10 === d).length >= 3) return false;
+          }
+        }
+        if (document.getElementById("filterDelta").checked) {
+          const deltas = [];
+          for (let i = 0; i < 5; i++) deltas.push(sorted[i + 1] - sorted[i]);
+          if (new Set(deltas).size < 3) return false;
+        }
+        if (
+          document.getElementById("filterBonus").checked &&
+          row.bonus !== undefined
+        ) {
+          if (numbers.includes(row.bonus)) return false;
+        }
+        return true;
+      }
+
+      function drawTable(data) {
+        const table = document.getElementById("resultTable");
+        table.innerHTML = "";
+        const header = `<tr><th>num1</th><th>num2</th><th>num3</th><th>num4</th><th>num5</th><th>num6</th><th>bonus</th></tr>`;
+        table.insertAdjacentHTML("beforeend", header);
+        data.slice(0, 100).forEach((row) => {
+          const tr = `<tr><td>${row.num1}</td><td>${row.num2}</td><td>${
+            row.num3
+          }</td><td>${row.num4}</td><td>${row.num5}</td><td>${
+            row.num6
+          }</td><td>${row.bonus ?? ""}</td></tr>`;
+          table.insertAdjacentHTML("beforeend", tr);
+        });
+      }
+
+      function drawHistogram(sums) {
+        const ctx = document.getElementById("sumChart").getContext("2d");
+        const bins = Array.from({ length: 200 }, (_, i) => i);
+        const counts = bins.map((bin) => sums.filter((s) => s === bin).length);
+
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: bins,
+            datasets: [
+              {
+                label: "Frequency of Total Sum",
+                data: counts,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: { title: { display: true, text: "Sum of Row" } },
+              y: { title: { display: true, text: "Frequency" } },
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

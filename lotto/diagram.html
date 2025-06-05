@@ -3,14 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lotto Bell Curves (num1 to num5)</title>
+    <title>Lotto Bell Curves with Row Sum Mean</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+    <style>
+      canvas {
+        margin-bottom: 40px;
+      }
+    </style>
   </head>
   <body>
-    <h2>Lotto Bell Curves (num1 to num5)</h2>
+    <h2>Lotto Bell Curves (num1 to bonus + Row Sum with Mean)</h2>
     <input type="file" id="csvFile" accept=".csv" />
-    <canvas id="chart" width="900" height="450"></canvas>
+    <div id="chartsContainer"></div>
 
     <script>
       document
@@ -32,71 +38,140 @@
                 "bonus",
               ];
               const freqMaps = {};
+              const rowSums = [];
 
-              // Initialize frequency maps
               columns.forEach((col) => (freqMaps[col] = {}));
 
               results.data.forEach((row) => {
+                let sum = 0;
                 columns.forEach((col) => {
                   const val = parseInt(row[col], 10);
                   if (!isNaN(val)) {
                     freqMaps[col][val] = (freqMaps[col][val] || 0) + 1;
+                    sum += val;
                   }
+                });
+                if (!isNaN(sum)) rowSums.push(sum);
+              });
+
+              const container = document.getElementById("chartsContainer");
+              container.innerHTML = "";
+
+              // Draw individual column charts
+              columns.forEach((col) => {
+                const map = freqMaps[col];
+                const labels = Object.keys(map)
+                  .map(Number)
+                  .sort((a, b) => a - b);
+                const data = labels.map((x) => map[x]);
+
+                const canvas = document.createElement("canvas");
+                canvas.width = 900;
+                canvas.height = 300;
+                container.appendChild(canvas);
+
+                new Chart(canvas.getContext("2d"), {
+                  type: "line",
+                  data: {
+                    labels: labels,
+                    datasets: [
+                      {
+                        label: col,
+                        data: data,
+                        fill: false,
+                        borderColor: "rgba(75,192,192,1)",
+                        tension: 0.3,
+                      },
+                    ],
+                  },
+                  options: {
+                    responsive: true,
+                    plugins: {
+                      legend: { position: "top" },
+                      title: { display: true, text: `Frequency: ${col}` },
+                    },
+                    scales: {
+                      x: { title: { display: true, text: "Number" } },
+                      y: {
+                        beginAtZero: true,
+                        title: { display: true, text: "Frequency" },
+                      },
+                    },
+                  },
                 });
               });
 
-              // Get full x-axis range
-              const allNums = new Set();
-              Object.values(freqMaps).forEach((map) => {
-                Object.keys(map).forEach((num) =>
-                  allNums.add(parseInt(num, 10))
-                );
+              // Row sum frequency map
+              const sumFreqMap = {};
+              rowSums.forEach((sum) => {
+                sumFreqMap[sum] = (sumFreqMap[sum] || 0) + 1;
               });
 
-              const labels = Array.from(allNums).sort((a, b) => a - b);
+              const sumLabels = Object.keys(sumFreqMap)
+                .map(Number)
+                .sort((a, b) => a - b);
+              const sumData = sumLabels.map((x) => sumFreqMap[x]);
 
-              const colors = [
-                "blue",
-                "red",
-                "green",
-                "orange",
-                "purple",
-                "pink",
-                "yellow",
-              ];
-              const datasets = columns.map((col, index) => ({
-                label: col,
-                data: labels.map((num) => freqMaps[col][num] || 0),
-                fill: false,
-                borderColor: colors[index],
-                tension: 0.3,
-              }));
+              // Calculate mean
+              const mean =
+                rowSums.reduce((acc, val) => acc + val, 0) / rowSums.length;
 
-              const ctx = document.getElementById("chart").getContext("2d");
-              new Chart(ctx, {
+              const annotations = {
+                annotations: {
+                  mean: {
+                    type: "line",
+                    xMin: mean,
+                    xMax: mean,
+                    borderColor: "red",
+                    borderWidth: 2,
+                    label: {
+                      content: `μ = ${mean.toFixed(1)}`,
+                      enabled: true,
+                      position: "start",
+                    },
+                  },
+                },
+              };
+
+              const sumCanvas = document.createElement("canvas");
+              sumCanvas.width = 900;
+              sumCanvas.height = 300;
+              container.appendChild(sumCanvas);
+
+              new Chart(sumCanvas.getContext("2d"), {
                 type: "line",
                 data: {
-                  labels: labels,
-                  datasets: datasets,
+                  labels: sumLabels,
+                  datasets: [
+                    {
+                      label: "Row Sum",
+                      data: sumData,
+                      fill: false,
+                      borderColor: "rgba(255,99,132,1)",
+                      tension: 0.3,
+                    },
+                  ],
                 },
                 options: {
                   responsive: true,
                   plugins: {
                     legend: { position: "top" },
+                    title: {
+                      display: true,
+                      text: "Row Sum Frequency with Mean",
+                    },
+                    annotation: annotations,
                   },
                   scales: {
                     x: {
                       title: {
                         display: true,
-                        text: "Number (lotto)",
+                        text: "Sum of Row (num1 ~ bonus)",
                       },
                     },
                     y: {
                       beginAtZero: true,
-                      title: {
-                        display: true,
-                        text: "Frequency",
-                      },
+                      title: { display: true, text: "Frequency" },
                     },
                   },
                 },
@@ -104,12 +179,6 @@
             },
           });
         });
-
-      // num1 1<= i <= 12(freq)
-      // num2 3<= i <= 19(freq)
-      // num3 10<= i <= 34(freq)
-      // num4 15<= i <= 37(freq)
-      // num5 27<= i <= 42(freq)
     </script>
   </body>
 </html>
