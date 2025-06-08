@@ -1,0 +1,112 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    background: red;
+    font-size: 1.2em;
+    overflow: hidden;
+    margin: 0 auto;
+    align-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Parent */
+body div {
+    display: flex;
+    /* height: 0vh;
+    width: 0vw; */
+    justify-content: center;
+    
+    margin: 0 auto;
+}
+
+/* main */
+.main { 
+    background: white;
+    position: relative;
+    height: 100vh;
+    width: 85vw;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main::after {
+  position: relative;
+  perspective: 1200px;
+  perspective-origin: 50% -50%;
+}
+
+@keyframes main {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+/* main > nav */
+.nav {
+    flex-direction: row;
+    background: aquamarine;
+    border: 1px solid;
+    /* width: 100vw; */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    cursor: pointer;
+}
+
+/* main > main-container */
+
+/* Top */
+.top {
+    visibility: hidden;
+    overflow: hidden;
+    color: white;
+    height: 0vh;
+    border: 1px solid;
+    
+    transform: translateX(-50%);
+    align-self: center;
+    align-items: center;
+    left: 50%;
+    top: 10%;
+    position: relative;
+}
+
+/* Left */
+.left {
+    visibility: hidden;
+    overflow: hidden;
+    height: 0vh;
+    color: white;
+}
+
+/* Right */
+.right {
+    visibility: hidden;
+    overflow: hidden;
+    height: 0vh;
+    color: white;
+}
+
+/* Bottom */
+.bottom {
+    visibility: hidden;
+    overflow: hidden;
+    color: white;
+    height: 0vh;
+    border: 1px solid;
+    
+    transform: translateX(-50%);
+    align-self: center;
+    align-items: center;
+    left: 50%;
+    bottom: 10%;
+    position: relative;
+    
+}
