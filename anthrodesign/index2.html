@@ -9,53 +9,63 @@
   </head>
   <body>
     <div class="top">
-      <span
-        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor vitae
-        obcaecati similique voluptas labore, repellat magni velit, tempora,
-        aspernatur vero eius eos iure excepturi saepe ratione esse omnis. Ea,
-        quibusdam?</span
-      >
+      <span>sample text goes here</span>
     </div>
-    <div class="main">
-      <div class="nav">
-        <span id="top">top</span>
-        <span id="left">left</span>
-        <span id="right">right</span>
-        <span id="bottom">bottom</span>
-        <span id="close">close</span>
-      </div>
-      <span class="main-container">Lorem Ipsum</span>
-      <br />
-      <span
-        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor vitae
-        obcaecati similique voluptas labore, repellat magni velit, tempora,
-        aspernatur vero eius eos iure excepturi saepe ratione esse omnis. Ea,
-        quibusdam?</span
-      >
-    </div>
-    <div class="left">
-      <span
-        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor vitae
-        obcaecati similique voluptas labore, repellat magni velit, tempora,
-        aspernatur vero eius eos iure excepturi saepe ratione esse omnis. Ea,
-        quibusdam?</span
-      >
-    </div>
-    <div class="right">
-      <span
-        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor vitae
-        obcaecati similique voluptas labore, repellat magni velit, tempora,
-        aspernatur vero eius eos iure excepturi saepe ratione esse omnis. Ea,
-        quibusdam?</span
-      >
-    </div>
-    <div class="bottom">
-      <span
-        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor vitae
-        obcaecati similique voluptas labore, repellat magni velit, tempora,
-        aspernatur vero eius eos iure excepturi saepe ratione esse omnis. Ea,
-        quibusdam?</span
-      >
-    </div>
-  </body>
+<div class="container">
+  <div class="left">
+      <span>sample text goes here</span>
+      <span id="Lclose">close</span>
+  </div>
+  <div class="main">
+    <div class="nav">
+      <span id="top">top</span>
+      <span id="left">left</span>
+      <span id="right">right</span>
+      <span id="bottom">bottom</span>
+      <span id="close">close</span>
+  </div>
+  </div>
+  <div class="right">
+      <span>sample text goes here</span>
+      <br>
+      <span id="Rclose">close</span>
+  </div>
+</div>
+<div class="bottom">
+      <span>sample text goes here</span>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".container");
+  const main = document.querySelector(".main");
+  const left = document.querySelector(".left");
+  const right = document.querySelector(".right");
+  const top = document.querySelector(".top");
+  const bottom = document.querySelector(".bottom");
+  const closebtn = document.querySelector("#close")
+  const Lclosebtn = document.querySelector("#Lclose")
+  const Rclosebtn = document.querySelector("#Rclose")
+  const leftbtn = document.querySelector("#left")
+  const rightbtn = document.querySelector("#right")
+  const topbtn = document.querySelector("#top")
+  const bottombtn = document.querySelector("#bottom")
+  
+  //prevent animation redundancy
+  container.style.transition = "none";
+  container.style.transform = "none";
+
+  topbtn.onclick = () => transformMain("0", "50vh", "-300px");
+  bottombtn.onclick = () => transformMain("0", "-50vh", "-300px");
+  leftbtn.onclick = () => transformMain("30vh", "0", "-50px");
+  rightbtn.onclick = () => transformMain("-30vh", "0", "-50px");
+  closebtn.onclick = () => transformMain("0", "0", "0");
+
+  function transformMain(x = "0", y = "0", z = "0") {
+  container.style.transform = `perspective(800px) rotateX(0deg) translate3d(${x}, ${y}, ${z})`;
+  }
+  });
+</script>
+
+</body>
 </html>

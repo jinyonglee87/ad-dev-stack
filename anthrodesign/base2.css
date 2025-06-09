@@ -1,90 +1,93 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+box-sizing: content-box;
 }
 
 body {
-  background: red;
+  background: #FF1D25;
   font-size: 1.2em;
-  overflow: hidden;
   margin: 0 auto;
-  align-content: center;
-  align-items: center;
-  position: relative;
-}
-
-/* Parent */
-body div {
   display: flex;
-  /* height: 0vh;
-    width: 0vw; */
   justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
   margin: 0 auto;
+  top: 0;
+  bottom: 0;
+
 }
 
-/* main */
-.main {
-  background: white;
-  position: relative;
-  height: 50vh;
-  width: 50vw;
-  flex-direction: column;
-  align-items: center;
-}
-
-.main::after {
-  position: relative;
+/* .container::after {
   perspective: 1200px;
   perspective-origin: 50% -50%;
+  overflow: hidden;
+} */
+
+.main {
+  background: white;
+  text-align: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-@keyframes main {
+.left {
+  background: aquamarine;
+  width: 50vw;
+  text-align: right;
+}
+
+.left #Lclose {
+  cursor: pointer
+}
+
+.right {
+  background: beige;
+  width: 50vw;
+  text-align: left;
+}
+
+.right #Rclose {
+  cursor: pointer
+}
+
+.bottom {
+    background: coral;
+  /* height: 300px; */
+  width: 100vw;
+}
+
+.top {
+  position: fixed;
+  background: violet;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10em 0;
+  /* content-visibility: hidden; */
+}
+
+.nav {
+  cursor: pointer;
+  margin: 10%;
+}
+
+/* Animation */
+@keyframes container {
   0% {
     transform: translateY(0);
   }
   100% {
     transform: translateY(100vh);
   }
-}
-/* main > nav */
-.nav {
-  flex-direction: row;
-  background: aquamarine;
-  border: 1px solid;
-  /* width: 100vw; */
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2rem;
-  cursor: pointer;
-}
-
-/* main > main-container */
-
-/* Top */
-.top {
-  color: white;
-  height: 0vh;
-  background: teal;
-}
-
-/* Left */
-.left {
-  height: 0vh;
-  color: white;
-  background: teal;
-}
-
-/* Right */
-.right {
-  height: 0vh;
-  color: white;
-  background: teal;
-}
-
-/* Bottom */
-.bottom {
-  background: teal;
-  color: white;
-  height: 0vh;
 }
