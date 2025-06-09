@@ -1,116 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="base2.css">
-</head>
-<body>
+    <link rel="stylesheet" href="base2.css" />
+  </head>
+  <body>
     <div class="top">
-        <span>Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Dolor vitae obcaecati similique voluptas labore,
-            repellat magni velit, tempora, aspernatur vero eius eos iure excepturi saepe ratione esse omnis.
-            Ea, quibusdam?</span>
+      <span
+        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor vitae
+        obcaecati similique voluptas labore, repellat magni velit, tempora,
+        aspernatur vero eius eos iure excepturi saepe ratione esse omnis. Ea,
+        quibusdam?</span
+      >
     </div>
     <div class="main">
-        <div class="nav">
-            <span id="top">top</span>
-            <span id="left">left</span>
-            <span id="right">right</span>
-            <span id="bottom">bottom</span>
-            <span id="close">close</span>
-        </div>
-        <span class="main-container">Lorem Ipsum</span>
-        <br>
-        <span>Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Dolor vitae obcaecati similique voluptas labore,
-            repellat magni velit, tempora, aspernatur vero eius eos iure excepturi saepe ratione esse omnis.
-            Ea, quibusdam?</span>
+      <div class="nav">
+        <span id="top">top</span>
+        <span id="left">left</span>
+        <span id="right">right</span>
+        <span id="bottom">bottom</span>
+        <span id="close">close</span>
+      </div>
+      <span class="main-container">Lorem Ipsum</span>
+      <br />
+      <span
+        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor vitae
+        obcaecati similique voluptas labore, repellat magni velit, tempora,
+        aspernatur vero eius eos iure excepturi saepe ratione esse omnis. Ea,
+        quibusdam?</span
+      >
     </div>
     <div class="left">
-                <span>Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Dolor vitae obcaecati similique voluptas labore,
-            repellat magni velit, tempora, aspernatur vero eius eos iure excepturi saepe ratione esse omnis.
-            Ea, quibusdam?</span>
+      <span
+        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor vitae
+        obcaecati similique voluptas labore, repellat magni velit, tempora,
+        aspernatur vero eius eos iure excepturi saepe ratione esse omnis. Ea,
+        quibusdam?</span
+      >
     </div>
     <div class="right">
-                <span>Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Dolor vitae obcaecati similique voluptas labore,
-            repellat magni velit, tempora, aspernatur vero eius eos iure excepturi saepe ratione esse omnis.
-            Ea, quibusdam?</span>
+      <span
+        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor vitae
+        obcaecati similique voluptas labore, repellat magni velit, tempora,
+        aspernatur vero eius eos iure excepturi saepe ratione esse omnis. Ea,
+        quibusdam?</span
+      >
     </div>
     <div class="bottom">
-                <span>Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Dolor vitae obcaecati similique voluptas labore,
-            repellat magni velit, tempora, aspernatur vero eius eos iure excepturi saepe ratione esse omnis.
-            Ea, quibusdam?</span>
+      <span
+        >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor vitae
+        obcaecati similique voluptas labore, repellat magni velit, tempora,
+        aspernatur vero eius eos iure excepturi saepe ratione esse omnis. Ea,
+        quibusdam?</span
+      >
     </div>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-  const main = document.querySelector(".main");
-
-  // 🚫 Immediately cancel transition to avoid animating from old transform
-  main.style.transition = "none";
-  main.style.transform = "none";
-
-  // ✅ Re-enable transition shortly after reset
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      main.style.transition = "transform 1s cubic-bezier(0.4, 0.2, 0.2, 1)";
-    });
-  });
-
-  // Transform utility
-  function transformMain(x = "0", y = "0", z = "0") {
-    main.style.transform = `perspective(800px) rotateX(0deg) translate3d(${x}, ${y}, ${z})`;
-  }
-
-// Event handlers
-const topDiv = document.querySelector(".top");
-const leftDiv = document.querySelector(".left");
-const rightDiv = document.querySelector(".right");
-const bottomDiv = document.querySelector(".bottom");
-
-document.getElementById("top").onclick = () => {
-  transformMain("0", "50vh", "-300px");
-  if (topDiv) {
-    topDiv.style.visibility = "visible";
-    topDiv.style.height = "30vh";
-    topDiv.style.display = "block";
-  }
-};
-
-document.getElementById("bottom").onclick = () => {
-  transformMain("0", "-50vh", "-300px");
-  if (bottomDiv) {
-    bottomDiv.style.visibility = "visible";
-    bottomDiv.style.height = "30vh";
-    bottomDiv.style.overflow = "visible";
-    bottomDiv.style.display = "block";
-    bottomDiv.style.justifyContent = "center";
-  }
-};
-
-document.getElementById("left").onclick = () => {transformMain("30vh", "0", "-50px")
-
-};
-
-document.getElementById("right").onclick = () => {transformMain("-30vh", "0", "-50px")
-
-};
-
-document.getElementById("close").onclick = () => {
-  transformMain("0", "0", "0");
-  if (topDiv) {
-    topDiv.style.visibility = "hidden";
-    topDiv.style.height = "0vh";
-  }
-};
-});
-
-</script>
-</body>
+  </body>
 </html>

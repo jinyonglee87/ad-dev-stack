@@ -5,33 +5,32 @@
 }
 
 body {
-    background: red;
-    font-size: 1.2em;
-    overflow: hidden;
-    margin: 0 auto;
-    align-content: center;
-    align-items: center;
-    position: relative;
+  background: red;
+  font-size: 1.2em;
+  overflow: hidden;
+  margin: 0 auto;
+  align-content: center;
+  align-items: center;
+  position: relative;
 }
 
 /* Parent */
 body div {
-    display: flex;
-    /* height: 0vh;
+  display: flex;
+  /* height: 0vh;
     width: 0vw; */
-    justify-content: center;
-    
-    margin: 0 auto;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 /* main */
-.main { 
-    background: white;
-    position: relative;
-    height: 100vh;
-    width: 85vw;
-    flex-direction: column;
-    align-items: center;
+.main {
+  background: white;
+  position: relative;
+  height: 50vh;
+  width: 50vw;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main::after {
@@ -50,63 +49,42 @@ body div {
 }
 /* main > nav */
 .nav {
-    flex-direction: row;
-    background: aquamarine;
-    border: 1px solid;
-    /* width: 100vw; */
-    display: flex;
-    justify-content: space-between;
-    padding: 0 2rem;
-    cursor: pointer;
+  flex-direction: row;
+  background: aquamarine;
+  border: 1px solid;
+  /* width: 100vw; */
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  cursor: pointer;
 }
 
 /* main > main-container */
 
 /* Top */
 .top {
-    visibility: hidden;
-    overflow: hidden;
-    color: white;
-    height: 0vh;
-    border: 1px solid;
-    
-    transform: translateX(-50%);
-    align-self: center;
-    align-items: center;
-    left: 50%;
-    top: 10%;
-    position: relative;
+  color: white;
+  height: 0vh;
+  background: teal;
 }
 
 /* Left */
 .left {
-    visibility: hidden;
-    overflow: hidden;
-    height: 0vh;
-    color: white;
+  height: 0vh;
+  color: white;
+  background: teal;
 }
 
 /* Right */
 .right {
-    visibility: hidden;
-    overflow: hidden;
-    height: 0vh;
-    color: white;
+  height: 0vh;
+  color: white;
+  background: teal;
 }
 
 /* Bottom */
 .bottom {
-    visibility: hidden;
-    overflow: hidden;
-    color: white;
-    height: 0vh;
-    border: 1px solid;
-    
-    transform: translateX(-50%);
-    align-self: center;
-    align-items: center;
-    left: 50%;
-    bottom: 10%;
-    position: relative;
-    
+  background: teal;
+  color: white;
+  height: 0vh;
 }
