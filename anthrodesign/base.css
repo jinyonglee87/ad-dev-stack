@@ -10,20 +10,17 @@ body {
   overflow: hidden;
   margin: 0 auto;
   color: #a0a2ae;
-  background-color: red;
+  background: #ff494f;
 }
-
 
 .main-container {
   display: flex;
   position: relative;
-  background-color: aquamarine;
+  background-color: rgb(109, 240, 250);
   flex-direction: column;
-  
 }
 
 nav {
-  
   top: 0;
   left: 0;
   right: 0;
@@ -34,13 +31,12 @@ nav {
 }
 
 nav #bar {
-  background: rgb(223, 0, 0);
+  background: #ff1d25;
   height: 6px;
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
-  z-index: -1;
 }
 
 nav i {
@@ -63,7 +59,6 @@ nav img {
   perspective-origin: 50% -50%;
 }
 
-
 .left {
   background: rgb(136, 136, 136);
   width: 36.6vw;
@@ -75,6 +70,28 @@ nav img {
   height: 100vh;
 }
 
+.top {
+  position: fixed;
+  display: flex;
+  color: white;
+  font-size: 2em;
+  top: 20vh;
+  left: 30vw;
+  right: 30vw;
+  visibility: hidden;
+}
+
+.bottom {
+  position: fixed;
+  display: flex;
+  color: white;
+  font-size: 2em;
+  top: 80vh;
+  left: 30vw;
+  right: 30vw;
+  border: 2px solid;
+  visibility: hidden;
+}
 @keyframes main-container {
   0% {
     transform: translateY(0);

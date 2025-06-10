@@ -1,11 +1,11 @@
 *,
 *::before,
 *::after {
-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 body {
-  background: #FF1D25;
+  background: #ff1d25;
   font-size: 1.2em;
   margin: 0 auto;
   display: flex;
@@ -23,7 +23,6 @@ body {
   margin: 0 auto;
   top: 0;
   bottom: 0;
-
 }
 
 /* .container::after {
@@ -41,29 +40,36 @@ body {
 }
 
 .left {
+  position: fixed;
   background: aquamarine;
-  width: 50vw;
   text-align: right;
+  height: 100vh;
+  width: 30vh;
+  left: 0;
 }
 
 .left #Lclose {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .right {
-  background: beige;
-  width: 50vw;
+  position: fixed;
+  background: rgb(136, 136, 94);
   text-align: left;
+  height: 100vh;
+  width: 30vh;
+  right: 0;
 }
 
 .right #Rclose {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .bottom {
-    background: coral;
+  position: fixed;
+  background: coral;
   /* height: 300px; */
-  width: 100vw;
+  bottom: 0;
 }
 
 .top {
@@ -71,10 +77,12 @@ body {
   background: violet;
   border: 2px solid;
   display: flex;
+  top: 0;
+
   align-items: center;
   justify-content: center;
-  padding: 10em 0;
-  /* content-visibility: hidden; */
+  padding: 30px; /**/
+  /* visibility: collapse;       */
 }
 
 .nav {
@@ -83,7 +91,7 @@ body {
 }
 
 /* Animation */
-@keyframes container {
+@keyframes main {
   0% {
     transform: translateY(0);
   }

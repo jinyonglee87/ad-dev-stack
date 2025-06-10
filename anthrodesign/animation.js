@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const main = document.querySelector("main");
+  const main = document.querySelector("main"); //this is not a div but a semantics tag
+  const top = document.querySelector(".top");
+  const left = document.querySelector(".left");
+  const right = document.querySelector(".right");
+  const bottom = document.querySelector(".bottom"); //this is a div
 
   // 🚫 Immediately cancel transition to avoid animating from old transform
   main.style.transition = "none";
@@ -18,9 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Event handlers
-  document.getElementById("top").onclick = () => transformMain("0", "50vh", "-300px");
-  document.getElementById("bottom").onclick = () => transformMain("0", "-50vh", "-300px");
-  document.getElementById("left").onclick = () => transformMain("30vh", "0", "-50px");
-  document.getElementById("right").onclick = () => transformMain("-30vh", "0", "-50px");
-  document.getElementById("top-close").onclick = () => transformMain("0", "0", "0");
+  document.getElementById("top").onclick = () => {
+    transformMain("0", "50vh", "-300px");
+    top.style.visibility = "visible";
+  };
+  document.getElementById("bottom").onclick = () => {
+    transformMain("0", "-50vh", "-300px");
+    bottom.style.visibility = "visible";
+  };
+  document.getElementById("left").onclick = () =>
+    transformMain("30vh", "0", "0px");
+  document.getElementById("right").onclick = () =>
+    transformMain("-30vh", "0", "-50px");
+  document.getElementById("top-close").onclick = () => {
+    top.style.visibility = "hidden";
+    transformMain("0", "0", "0");
+  };
+  document.getElementById("bottom-close").onclick = () => {
+    transformMain("0", "0", "0");
+    bottom.style.visibility = "hidden";
+  };
 });
