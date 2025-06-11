@@ -191,3 +191,8 @@ AND SALARY > ALL
 (SELECT SALARY FROM EMPLOYEE
 JOIN JOB USING (JOB_CODE)
 WHERE JOB_NAME = '차장');
+
+/*
+    3. 다중열 SUBQUERY
+     - 서브쿼리의 조회 결과값이 한 행이지만 컬럼이 여러개일 때 (한 행 여러 열)
+*/
