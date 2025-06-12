@@ -92,6 +92,8 @@ nav img {
   border: 2px solid;
   visibility: hidden;
 }
+
+/* ANIMATION */
 @keyframes main-container {
   0% {
     transform: translateY(0);

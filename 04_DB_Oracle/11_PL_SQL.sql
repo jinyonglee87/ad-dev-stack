@@ -1,0 +1,99 @@
+/*
+    PL/SQL (PROCEDURE LANGUAGE EXTENSION TO SQL)
+     - ORACLE에서 제공하는 절차적인 프로그래밍 언어
+     - SQL 문장 내에서 변수의 정의, IF(조건처리), LOOP, FOR, WHILE(반복처리) 등을
+       지원하는 SQL의 단점을 보완
+     - 다수의 SQL 문을 한번에 실행 가능 (BLOCK 구조)
+
+    * BLOCK : 명령어를 모아 둔 PL/SQL 프로그램의 기본 단위
+
+    * PL/SQL 구조
+     - [(DECALRE SECTION)] : 선언부
+     -> DECLARE 시작, 변수나 상수를 선언 및 초기화
+     
+     - (EXECUTABLE SECTION) : 실행부
+     -> BEGIN 시작, SQL문 또는 제어문 (조건문, 반복문)
+     
+     - [(EXCEPTION SECTION)] : 예외처리부
+     -> EXCEPTION 시작, 예외 발생 시 해결하기 위한 구문을 미리 기술
+*/
+ SET SERVEROUTPUT ON //ORACLE SQL DEVELOPER 먼저 입력
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('HELLO ORACLE');
+END;
+/
+-- / <--무조건 명시
+
+/*
+    DECLARE 선언부
+     - 변수 및 상수를 선언하는 공간 (선언과 동시에 초기화도 가능)
+*/
+-- ORACLE SQL DEVELOPER
+DECLARE
+EID NUMBER;
+BEGIN
+    EID := &번호;
+    DBMS_OUTPUT.PUT_LINE('EID :' || EID);
+END;
+
+--
+DECLARE 
+EID NUMBER;
+ENAME VARCHAR2(20);
+PI CONSTANT NUMBER := 3.14; -- 상수값 지정
+BEGIN
+EID := &번호;
+Ename := '&이름';
+DBMS_OUTPUT.PUT_LINE('EID :' || EID);
+DBMS_OUTPUT.PUT_LINE('ENAME :' || ENAME);
+DBMS_OUTPUT.PUT_LINE('PI :' || PI);
+END;
+/
+
+-- 박나라 사원의 사번, 사원명, 급여 정보를 조회해서 출력
+DECLARE
+EID EMPLOYEE.EMP_ID%TYPE;
+ENAME EMPLOYEE.EMP_NAME%TYPE;
+SAL EMPLOYEE.SALARY%TYPE;
+BEGIN
+SELECT EMP_ID, EMP_NAME, SALARY 
+INTO EID, ENAME, SAL
+FROM EMPLOYEE
+WHERE EMP_NAME = '&이름';
+
+DBMS_OUTPUT.PUT_LINE('EID : ' || EID);
+DBMS_OUTPUT.PUT_LINE('ENAME : ' || ENAME);
+DBMS_OUTPUT.PUT_LINE('SAL : ' || SAL);
+END;
+/
+
+/*
+    EMPLOYEE, DEPARTMENT 테이블
+    컬럼 : EMP_ID, EMP_NAME, DEPT_TITLE
+    조회 : EMP_ID로 해당 부서가 어디인지
+    
+    -- 레퍼런스 타입 변수 : 변수명 테이블명.컬럼명%TYPE
+*/
+DECLARE
+    EID EMPLOYEE.EMP_ID%TYPE;
+    ENAME EMPLOYEE.EMP_NAME%TYPE;
+    DTITLE DEPARTMENT.DEPT_TITLE%TYPE;
+BEGIN
+SELECT EMP_ID, EMP_NAME, DEPT_TITLE
+INTO EID, ENAME, DTITLE
+FROM EMPLOYEE
+JOIN DEPARTMENT ON (DEPT_ID = DEPT_CODE)
+WHERE EMP_ID = '&번호';
+
+DBMS_OUTPUT.PUT_LINE('EID :' || EID);
+DBMS_OUTPUT.PUT_LINE('ENAME :' || ENAME);
+DBMS_OUTPUT.PUT_LINE('DTITLE :' || DTITLE);
+END;
+/
+
+SELECT EMP_ID, EMP_NAME, DEPT_TITLE
+--INTO EID, ENAME, DTITLE
+FROM EMPLOYEE
+JOIN DEPARTMENT ON (DEPT_ID = DEPT_CODE);
+
+SELECT * FROM DEPARTMENT;
