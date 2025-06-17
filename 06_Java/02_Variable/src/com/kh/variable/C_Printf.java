@@ -1,6 +1,6 @@
 package com.kh.variable;
 
-public class c_Printf {
+public class C_Printf {
 
 	public static void main(String[] args) {
 		System.out.println("Hello"); //println = ln = 줄바꿈
