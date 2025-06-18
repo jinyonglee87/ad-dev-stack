@@ -94,11 +94,16 @@ public class VariablePractice {
 	 * 둘레 : 110.4
 	 * */
 	public void method4() {
-		double vertical = 41.7;
-		double horizontal = 13.5;
+		System.out.println("가로 :");
+		double horizontal = Double.parseDouble(sc.nextLine());
+		System.out.println("세로 :");
+		double vertical = Double.parseDouble(sc.nextLine());
 		
-		System.out.println("면적 = " + (vertical * horizontal));
-		System.out.println("둘레 = " + (vertical + horizontal)*2);
+		double area = (vertical * horizontal);
+		double circum = (vertical + horizontal) * 2;
+
+		System.out.printf("면적 : %.2f\n", area);
+		System.out.println("둘레 : " + String.format("%.1f", circum));
 		System.out.println();
 
 	}
@@ -114,10 +119,12 @@ public class VariablePractice {
 	public void method5() {
 		String fruit = "apple";
 		
-		System.out.println("Apple 단어 길이" + fruit.length());
-		System.out.println("1번자는 " + fruit.charAt(0));
-		System.out.println("2번자는 " + fruit.charAt(2));
-		System.out.println("5번자는 " + fruit.charAt(4));
+		System.out.println("문자열을 입력하세요 : ");
+		String word = sc.nextLine();
+		System.out.println(word.charAt(0));
+		System.out.println(word.charAt(1));
+		System.out.println(word.charAt(word.length() -1));
+		System.out.println();
 		
 	}
 
@@ -130,15 +137,14 @@ public class VariablePractice {
 	 * */
 	public void method6() {
 		
-		int num = 'A';
-		System.out.println(num);
+		System.out.println("문자 입력 >");
+		char word = sc.nextLine().charAt(0);
+		int num = word;
+
+		System.out.println(word + " unicode : " + num );
+		System.out.println((char)(num + 1) + " unicode : " + (num + 1));
 		
-		char ch = 65;
-		System.out.println(ch);
-
-		char ch2 = 66;
-		System.out.println(ch2);
-
+		System.out.println();
 	}
 	
 	/*
@@ -151,7 +157,17 @@ public class VariablePractice {
 	 * 평균 : 72.67
 	 * */
 	public void method7() {
-
+		System.out.println("국어 : ");
+		int kor = Integer.parseInt(sc.nextLine());
+		System.out.println("영어 : ");
+		int eng = Integer.parseInt(sc.nextLine());
+		System.out.println("수학 : ");
+		int math = Integer.parseInt(sc.nextLine());
+		
+		int sum = (kor + eng + math);
+		
+		System.out.println("total " + sum);
+		System.out.println("average " + ((double)(sum/3)));
 	}
 
 }
